@@ -52,35 +52,41 @@ app.post('/register', function(req, res) {
         })
         .catch(err =>{
             console.log(err.message);
-            res.json({ success: false })
+            res.json({ success: false });
         });
 });
 
-app.post('/register', function(req, res) {
-    console.log('post request in index.js works!',req.body);
-    db.hashedPassword(req.body.password)
-        .then(hash => {
-            return db.insertNewUser(
-                req.body.first,
-                req.body.last,
-                req.body.email,
-                hash
 
-            );
-        })
+app.post('/login', (req, res) => {
+    console.log("login works!!");
+    db.getHashedPasswordfromDB(req.body.email)
         .then(result => {
+            console.log("********* req.body.password, result.rows[0].password",req.body.password, result.rows[0].password);
+            return db.checkPassword(req.body.password, result.rows[0].password);
 
-            req.session.userId = result['rows'][0].id;
-            console.log('req.session.userId',req.session.userId);
-            res.json({ success: true });
+            // compares entered password with hashed password
+        })
+        .then(answer => {
+            if (answer) { //if it is true go on here and get the user ID
+                console.log("is true: ", answer);
+                db.getIdfromDB(req.body.email).then(result => {
+                    console.log('result', result);
+                    req.session.userId = result.rows[0].id;
+
+                    res.json({ success: true });
+                })
+                    .catch(err =>{
+                        console.log('1', err.message);
+                        res.json({ success: false });
+                    });
+            }
         })
         .catch(err =>{
-            console.log(err.message);
-            res.json({ success: false })
+            console.log('2', err.message);
+            res.json({ success: false });
         });
+
 });
-
-
 
 app.get('/welcome', function(req, res) {
     if (req.session.userId){
@@ -89,6 +95,7 @@ app.get('/welcome', function(req, res) {
         res.sendFile(__dirname + '/index.html');
     }
 });
+
 
 
 app.get('*', function(req, res) {

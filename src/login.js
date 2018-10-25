@@ -22,7 +22,7 @@ export class Login extends React.Component {
 
     handleSubmit(e) {
         console.log('handleSubmit, this.state.first', this.state.first);
-        axios.post('/register', {
+        axios.post('/login', {
             email: this.state.email,
             password: this.state.password,
         })

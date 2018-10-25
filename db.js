@@ -40,6 +40,25 @@ module.exports.hashedPassword = function(plainTextPassword) {
     });
 };
 
+exports.getHashedPasswordfromDB = function(email){
+    let q = `SELECT password FROM super_users WHERE email = $1`;
+    let params = [email];
+    return db.query(q, params);
+
+};
+exports.checkPassword = function(textEnteredInLoginForm, hashedPasswordFromDatabase) {
+    return new Promise(function(resolve, reject) {
+        bcrypt.compare(textEnteredInLoginForm, hashedPasswordFromDatabase, function(err, doesMatch) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(doesMatch);
+            }
+        });
+    });
+};
+
+
 module.exports.insertNewUser = function(first, last, email, password) {
     const q = `
     INSERT INTO super_users
@@ -57,4 +76,11 @@ module.exports.insertNewUser = function(first, last, email, password) {
     ];
     console.log("insertNewUser fired!");
     return db.query(q, params);
+};
+
+exports.getIdfromDB = function(email){
+    let q = `SELECT * FROM super_users WHERE email = $1`;
+    let params = [email];
+    return db.query(q, params);
+
 };
