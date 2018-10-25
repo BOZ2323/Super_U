@@ -3,12 +3,10 @@ import ReactDOM from 'react-dom';
 import axios from './axios';
 
 
-export class Registration extends React.Component {
+export class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            first: '',
-            last: '',
             email: '',
             password: '',
             error: false
@@ -25,15 +23,11 @@ export class Registration extends React.Component {
     handleSubmit(e) {
         console.log('handleSubmit, this.state.first', this.state.first);
         axios.post('/register', {
-
-            first: this.state.first,
-            last:this.state.last,
             email: this.state.email,
             password: this.state.password,
-
         })
             .then(result =>{
-                console.log("registration post request works!");
+                console.log("login post request works!");
                 if(result.data.success) {
                     console.log(result);
                     location.replace('/');
@@ -51,11 +45,9 @@ export class Registration extends React.Component {
         return (
             <div>
                 {this.state.error && <p className="error">Something went wrong! Try again</p>}
-                <input name="first" placeholder="First name" onChange={this.handleChange} />
-                <input name="last" placeholder="Last name" onChange={this.handleChange} />
                 <input name="email" placeholder="E-Mail address" onChange={this.handleChange} />
                 <input name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-                <button onClick={this.handleSubmit}>Register</button>
+                <button onClick={this.handleSubmit}>Login</button>
             </div>
 
         );
