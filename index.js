@@ -31,9 +31,20 @@ if (process.env.NODE_ENV != 'production') {
 } else {
     app.use('/bundle.js', (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
+app.use(express.static('public'));
+
+
+app.post('/user', function (req, res){
+    console.log('/user server post works!',req.body);
+    db.getUserById(req.session.userId)
+        .then(function({rows}){
+            res.json(rows[0]);
+        });
+});
+
 
 app.post('/register', function(req, res) {
-    console.log('post request in index.js works!',req.body);
+    console.log('/user server post works!');
     db.hashedPassword(req.body.password)
         .then(hash => {
             return db.insertNewUser(
@@ -61,7 +72,6 @@ app.post('/login', (req, res) => {
     console.log("login works!!");
     db.getHashedPasswordfromDB(req.body.email)
         .then(result => {
-            console.log("********* req.body.password, result.rows[0].password",req.body.password, result.rows[0].password);
             return db.checkPassword(req.body.password, result.rows[0].password);
 
             // compares entered password with hashed password
@@ -70,7 +80,7 @@ app.post('/login', (req, res) => {
             if (answer) { //if it is true go on here and get the user ID
                 console.log("is true: ", answer);
                 db.getIdfromDB(req.body.email).then(result => {
-                    console.log('result', result);
+                    // console.log('result', result);
                     req.session.userId = result.rows[0].id;
 
                     res.json({ success: true });
@@ -98,6 +108,17 @@ app.get('/welcome', function(req, res) {
 
 
 
+
+
+
+app.get('/user', function (req, res){
+    console.log('/user server get works!',req.body);
+    db.getUserById(req.session.userId)
+        .then(function({rows}){
+            res.json(rows[0]);
+        });
+});
+
 app.get('*', function(req, res) {
     if (!req.session.userId){
         res.redirect('/welcome');
@@ -105,6 +126,7 @@ app.get('*', function(req, res) {
         res.sendFile(__dirname + '/index.html');
     }
 });
+
 ///////////////////////////////////////////////////////
 
 app.listen(8080, function() {

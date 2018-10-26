@@ -27,7 +27,7 @@ export class Login extends React.Component {
             password: this.state.password,
         })
             .then(result =>{
-                console.log("login post request works!");
+                console.log("login client post works!");
                 if(result.data.success) {
                     console.log(result);
                     location.replace('/');

@@ -84,3 +84,9 @@ exports.getIdfromDB = function(email){
     return db.query(q, params);
 
 };
+exports.getUserById = function(id){
+    let q = `SELECT * FROM super_users WHERE id = $1`;
+    let params = [id];
+    return db.query(q, params);
+
+};

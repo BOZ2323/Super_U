@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from './axios';
+import { Link } from 'react-router-dom';
 
 
 export class Registration extends React.Component {
@@ -56,6 +57,7 @@ export class Registration extends React.Component {
                 <input name="email" placeholder="E-Mail address" onChange={this.handleChange} />
                 <input name="password" type="password" placeholder="Password" onChange={this.handleChange} />
                 <button onClick={this.handleSubmit}>Register</button>
+                <button><Link to="/login">Click here to Log in!</Link></button>
             </div>
 
         );
