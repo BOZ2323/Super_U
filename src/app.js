@@ -21,9 +21,11 @@ export class App extends React.Component {
         console.log('App component works')
         axios.get('/user').then(
             ({data}) => {
-                const {image, bio, first, last, id} = data;
+                console.log('data',data);
+                const {image_url, bio, first, last, id} = data;
                 this.setState({
-                    image, bio, first, last, id
+                    image: image_url,
+                    bio, first, last, id
                 });
             }
         );
@@ -58,15 +60,13 @@ export function ProfilePic(props){
         return <img src="practice-cartoon.png"/>
     }
     else{
+        console.log('props.image_url:', props.image);
         const image = props.image || '/logo.png'
+
         return(
-            // <img onClick={props.clickHandler} src={image}/>
-            <h1>{props.first} {props.last}</h1>
-            
+            <img onClick={props.clickHandler} src={image}/>
 
-
-
+            // className ="image_title"
         );
     }
-
 }

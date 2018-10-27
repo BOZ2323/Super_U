@@ -24,7 +24,7 @@ export class Registration extends React.Component {
     }
 
     handleSubmit(e) {
-        console.log('handleSubmit, this.state.first', this.state.first);
+        // console.log('handleSubmit, this.state.first', this.state.first);
         axios.post('/register', {
 
             first: this.state.first,
@@ -34,7 +34,7 @@ export class Registration extends React.Component {
 
         })
             .then(result =>{
-                console.log("registration post request works!");
+                console.log("registration client request works!");
                 if(result.data.success) {
                     console.log(result);
                     location.replace('/');

@@ -106,11 +106,6 @@ app.get('/welcome', function(req, res) {
     }
 });
 
-
-
-
-
-
 app.get('/user', function (req, res){
     console.log('/user server get works!',req.body);
     db.getUserById(req.session.userId)
