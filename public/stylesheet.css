@@ -6,3 +6,8 @@ h1 {
     font-weight: bolder;
     font-size: 30px;
 }
+.profilePic{
+    width: 100px;
+    height: 100px;
+
+}

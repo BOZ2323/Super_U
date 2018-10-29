@@ -1,7 +1,32 @@
 // this is for the middleware
-
 const express = require('express');
 const app = express();
+
+var multer = require('multer');
+var uidSafe = require('uid-safe');
+var path = require('path');
+const s3url = require('./config.json');
+const s3 = require('./s3.js');
+
+var diskStorage = multer.diskStorage({
+    destination: function (req, file, callback) {
+        callback(null, __dirname + '/uploads');
+    },
+    filename: function (req, file, callback) {
+        uidSafe(24).then(function(uid) { //generates a unique id
+            callback(null, uid + path.extname(file.originalname)); //null instead of err, because cb. pass the cb the path where the file should go, extname gives you just the extension
+        });
+    }
+});
+
+var uploader = multer({ //you call multer and pass it an obj with the obj just created. you give it limits, when to reject the file, eg: filesize
+    storage: diskStorage,
+    limits: {
+        fileSize: 2097152
+    }
+});
+
+
 const compression = require('compression');
 
 const db = require("./db.js");
@@ -96,6 +121,19 @@ app.post('/login', (req, res) => {
             res.json({ success: false });
         });
 
+});
+app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
+    // If nothing went wrong the file is already in the uploads directory
+    console.log(req.body);
+
+    const imgUrl = s3url.s3Url + req.file.filename;
+    console.log("url of new image",imgUrl);
+    console.log("s3url", s3url, req.session);
+    db.upload(imgUrl, req.session.userId)
+        .then(result => {
+            res.json(result.rows);
+            console.log('result.rows', result.rows);
+        });
 });
 
 app.get('/welcome', function(req, res) {

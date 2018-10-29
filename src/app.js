@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from './axios';
 import { Link } from 'react-router-dom';
+import { Uploader } from './uploader';
 
 
 
@@ -14,11 +15,14 @@ export class App extends React.Component {
             first: '',
             last: '',
             id: '',
-            error: false
+            error: false,
+            uploaderIsVisible: false
         };
+        this.showUploader = this.showUploader.bind(this);
+        this.setImage = this.setImage.bind(this);
     }
     componentDidMount(){
-        console.log('App component works')
+        console.log('App component works');
         axios.get('/user').then(
             ({data}) => {
                 console.log('data',data);
@@ -30,11 +34,20 @@ export class App extends React.Component {
             }
         );
     }
-    // showUploader(){
-    //     setState({
-    //         uploaderIsVisible: true
-    //     });
-    // }
+    setImage(img){
+        this.setState({
+            image: img,
+            uploaderIsVisible: false
+        });
+
+    }
+    showUploader(){
+        console.log('uploader works');
+        console.log(this.state.uploaderIsVisible);
+        this.setState({
+            uploaderIsVisible: true
+        });
+    }
     render(){
         if(!this.state.id){
             return null;
@@ -49,8 +62,10 @@ export class App extends React.Component {
                     clickHandler={this.showUploader}
                 />
                 <img src = "/logo.png"/>
+                {this.state.uploaderIsVisible && <Uploader setImage={this.setImage}/>}
+
             </div>
-            // {this.state.uploaderIsVisible && <Uploader setImage={this.setImage}/>} this goes into the div!
+
         );
     }
 }
@@ -64,7 +79,7 @@ export function ProfilePic(props){
         const image = props.image || '/logo.png'
 
         return(
-            <img onClick={props.clickHandler} src={image}/>
+            <img className="profilePic" onClick={props.clickHandler} src={image}/>
 
             // className ="image_title"
         );

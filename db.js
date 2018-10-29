@@ -90,3 +90,13 @@ exports.getUserById = function(id){
     return db.query(q, params);
 
 };
+exports.upload = function(image_url, id) {
+    const q = `
+    UPDATE super_users set image_url = $1
+    WHERE id = $2
+    returning *
+        `;
+
+    const params = [image_url, id];
+    return db.query(q, params);
+};

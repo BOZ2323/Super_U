@@ -12,3 +12,10 @@ CREATE TABLE super_users (
     image_url VARCHAR (500),
     users_bio VARCHAR (2000)
 );
+
+
+
+
+UPDATE super_users
+SET image_url = 'http://img.filmsactu.net/datas/films/p/o/ponyo-sur-la-falaise/xl/49a2b5c2f198e.jpg'
+WHERE id = 20;
