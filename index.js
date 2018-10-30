@@ -135,6 +135,27 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
             console.log('result.rows', result.rows);
         });
 });
+app.post('/add-bio.json', (req, res)=> {
+    console.log('req.body', req.body, req.session.userId);
+    db.saveBio(req.body.bio, req.session.userId)
+        .then(results => {
+            console.log('results of saveBio:', results.rows[0]);
+            res.json(results.rows[0]);
+        }).catch(err=> {
+            console.log(err.message);
+        })
+})
+
+app.get('/api-cute-anmials', (req, res) => {
+    console.log("GET /api-cute-animals");
+    db.getAnimalData().then('results.rows',results.rows);
+    res.json({
+        cuteAnimals: results.rows //send back an object, with the data I want, its send back to the app component as response
+    }).catch(err =>{
+        console.log("error in getAnimalData: ", err);
+    })
+});
+
 
 app.get('/welcome', function(req, res) {
     if (req.session.userId){

@@ -1,9 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from './axios';
-import { Link } from 'react-router-dom';
+import { BrowserRouter,Link,Route} from 'react-router-dom';
 import { Uploader } from './uploader';
+import Opp from './opp';
+import Profile from './profile';
+import {ProfilePic} from './profilePic';
 
+// in App all it does, it dictates what happens when certain routes are aquired
+// render, you send props (data!)
+////// log out //////////////////////////////
+export function Logout(props) {
+    return <a href='/logout'>Log out</a>
+}
 
 
 export class App extends React.Component {
@@ -26,13 +35,18 @@ export class App extends React.Component {
         axios.get('/user').then(
             ({data}) => {
                 console.log('data',data);
-                const {image_url, bio, first, last, id} = data;
+                const {image_url, users_bio, first, last, id} = data;
                 this.setState({
                     image: image_url,
-                    bio, first, last, id
+                    users_bio, first, last, id
                 });
             }
         );
+    }
+    setBio(bio) {
+        this.setState({
+            bio
+        });
     }
     setImage(img){
         this.setState({
@@ -42,12 +56,12 @@ export class App extends React.Component {
 
     }
     showUploader(){
-        console.log('uploader works');
-        console.log(this.state.uploaderIsVisible);
         this.setState({
             uploaderIsVisible: true
         });
     }
+    //Route exact path = "/user/:id" component = {Opp }/> ///: is a param
+
     render(){
         if(!this.state.id){
             return null;
@@ -62,26 +76,32 @@ export class App extends React.Component {
                     clickHandler={this.showUploader}
                 />
                 <img src = "/logo.png"/>
+                <BrowserRouter>
+                    <div>
+                        <Route
+                            path="/profile"
+                            render={props => (
+                                <Profile
+                                    first={this.state.first}
+                                    last={this.state.last}
+                                    id={this.state.id}
+                                    bio={this.state.users_bio}
+                                    image={this.state.url}
+                                    setBio={this.setBio}
+                                    clickHandler={this.showUploader}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/user/:id"
+                            component={Opp}
+                        />
+                    </div>
+                </BrowserRouter>
                 {this.state.uploaderIsVisible && <Uploader setImage={this.setImage}/>}
 
             </div>
 
-        );
-    }
-}
-
-export function ProfilePic(props){
-    if(!props.id){
-        return <img src="practice-cartoon.png"/>
-    }
-    else{
-        console.log('props.image_url:', props.image);
-        const image = props.image || '/logo.png'
-
-        return(
-            <img className="profilePic" onClick={props.clickHandler} src={image}/>
-
-            // className ="image_title"
         );
     }
 }

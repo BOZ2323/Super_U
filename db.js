@@ -90,6 +90,21 @@ exports.getUserById = function(id){
     return db.query(q, params);
 
 };
+exports.saveBio = function(users_bio, id) {
+    const q = `
+    UPDATE super_users
+    set users_bio = $1
+    WHERE id=$2
+    RETURNING users_bio
+    `;
+    const params = [
+        users_bio || null,
+        id || null
+    ];
+    return db.query(q, params);
+};
+
+
 exports.upload = function(image_url, id) {
     const q = `
     UPDATE super_users set image_url = $1

@@ -19,3 +19,19 @@ CREATE TABLE super_users (
 UPDATE super_users
 SET image_url = 'http://img.filmsactu.net/datas/films/p/o/ponyo-sur-la-falaise/xl/49a2b5c2f198e.jpg'
 WHERE id = 20;
+
+
+-- DROP TABLE IF EXISTS cute_animals;
+CREATE TABLE cute_animals (
+    id SERIAL PRIMARY KEY,
+    first VARCHAR(255) NOT NULL,
+    animal VARCHAR(255) NOT NULL,
+    score INT NOT NULL
+
+);
+
+INSERT INTO cute_animals (animal,score) VALUES ('honey badger', 10);
+INSERT INTO cute_animals (animal,score) VALUES ('hannibal', 10);
+INSERT INTO cute_animals (animal,score) VALUES ('turtle', 15);
+
+psql cute_animals -f petition -f /config/user.sql
