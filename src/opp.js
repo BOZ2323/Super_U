@@ -6,7 +6,7 @@ export default class Opp extends React.Component {
     constructor(){
         super();
         this.state = {
-            opp: ''
+
         };
         // this.handleChange = this.handleChange.bind(this);
         // this.handleSubmit=this.handleSubmit.bind(this);
@@ -18,11 +18,15 @@ export default class Opp extends React.Component {
         console.log('this.props.match', this.props.match);
         axios.get("/opp.json/" + oppId)
             .then((data) => {
+                console.log('data',data);
                 console.log('data.params.id',data.params.id);
-                const {id, first, last, email, image_url, users_bio} = data;
-
                 this.setState({
-                    opp: id, first, last, email, image_url, users_bio
+                    id: data.params.id,
+                    first: data.params.first,
+                    last: data.params.last,
+                    email: data.params.email,
+                    image_url: data.params.image_url,
+                    users_bio: data.params.users_bio,
                 });
 
             }).catch(err => {console.log('error in get request opp.json',err);
@@ -35,7 +39,7 @@ export default class Opp extends React.Component {
             </div>
         );
     }
-    }
+}
 
 
     // handleChange(e) {

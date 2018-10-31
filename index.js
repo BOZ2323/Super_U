@@ -135,17 +135,18 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
             console.log('result.rows', result.rows);
         });
 });
-app.post('/opp.json/:id', (req, res)=> {
-    console.log('req.body', req.body, req.session.userId);
-    db.saveBio(req.body.bio, req.session.userId)
+////////////// opp /////////////////////////////////////////
+app.get('/opp.json/:id', (req, res)=> {
+    db.getOppData(req.params.id)
         .then(results => {
-            console.log('results of saveBio:', results.rows[0]);
+            console.log('results of getOppData:', results.rows[0]);
             res.json(results.rows[0]);
         }).catch(err=> {
             console.log(err.message);
         });
 });
 
+////////////// bio /////////////////////////////////////////
 app.post('/add-bio.json', (req, res)=> {
     console.log('req.body', req.body, req.session.userId);
     db.saveBio(req.body.bio, req.session.userId)

@@ -84,6 +84,13 @@ exports.getIdfromDB = function(email){
     return db.query(q, params);
 
 };
+exports.getOppData = function(id) {
+    const q = `SELECT  id, first, last, image_url, users_bio FROM super_users WHERE id = $1`;
+    const params = [id || null];
+    return db.query(q, params);
+};
+
+
 exports.getUserById = function(id){
     let q = `SELECT * FROM super_users WHERE id = $1`;
     let params = [id];
