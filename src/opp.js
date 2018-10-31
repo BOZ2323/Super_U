@@ -1,5 +1,5 @@
-import React from 'react'
-import axios from 'axios'
+import React from 'react';
+import axios from 'axios';
 
 
 export default class Opp extends React.Component {
@@ -19,14 +19,13 @@ export default class Opp extends React.Component {
         axios.get("/opp.json/" + oppId)
             .then((data) => {
                 console.log('data',data);
-                console.log('data.params.id',data.params.id);
                 this.setState({
-                    id: data.params.id,
-                    first: data.params.first,
-                    last: data.params.last,
-                    email: data.params.email,
-                    image_url: data.params.image_url,
-                    users_bio: data.params.users_bio,
+                    id: data.data.id,
+                    first: data.data.first,
+                    last: data.data.last,
+                    email: data.data.email,
+                    image_url: data.data.image_url,
+                    users_bio: data.data.users_bio,
                 });
 
             }).catch(err => {console.log('error in get request opp.json',err);
@@ -35,34 +34,19 @@ export default class Opp extends React.Component {
     render() {
         return (
             <div>
-                <h1>Opp component running!</h1>
+                <h1>Hi {this.state.first}{this.state.last}!!</h1>
+                <img src={this.state.image_url} />
+                <p>
+                    {this.state.email}
+                    {this.state.user_bio}
+                </p>
             </div>
         );
     }
 }
 
 
-    // handleChange(e) {
-    //     this.setState({
-    //         opp: e.target.value
-    //     });
-    // }
-    // handleSubmit() {
-    //     axios.post('/add-opp.json', {
-    //         opp: this.state.opp,
-    //
-    //     })
-    //         .then(result => {
-    //             console.log("RESULT OF SAVING BIO: ", result);
-    //             this.setState({
-    //                 bioTextareaIsVisible: false,
-    //                 bio: result.data.users_bio
-    //             });
-    //
-    //         })
-    //         .catch(err => {
-    //             console.log("Error in saving bio: ", err.message);
-    //         });
+
 
 
 
