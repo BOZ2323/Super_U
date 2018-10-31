@@ -5,23 +5,64 @@ import axios from 'axios'
 export default class Opp extends React.Component {
     constructor(){
         super();
-        this.state = {}
+        this.state = {
+            opp: ''
+        };
+        // this.handleChange = this.handleChange.bind(this);
+        // this.handleSubmit=this.handleSubmit.bind(this);
     }
     componentDidMount(){
         console.log("opp component mounted");
-        const oppId = this.props.match.param.id;
+        const oppId = this.props.match.params.id;
         console.log('opps id:', oppId);
-        console.log('this.props.match', this.props.match)
-    }
+        console.log('this.props.match', this.props.match);
+        axios.get("/opp.json/" + oppId)
+            .then((data) => {
+                console.log('data.params.id',data.params.id);
+                const {id, first, last, email, image_url, users_bio} = data;
 
-    render(){
+                this.setState({
+                    opp: id, first, last, email, image_url, users_bio
+                });
+
+            }).catch(err => {console.log('error in get request opp.json',err);
+            });
+    }
+    render() {
         return (
             <div>
                 <h1>Opp component running!</h1>
             </div>
-        )
+        );
     }
-}
+    }
+
+
+    // handleChange(e) {
+    //     this.setState({
+    //         opp: e.target.value
+    //     });
+    // }
+    // handleSubmit() {
+    //     axios.post('/add-opp.json', {
+    //         opp: this.state.opp,
+    //
+    //     })
+    //         .then(result => {
+    //             console.log("RESULT OF SAVING BIO: ", result);
+    //             this.setState({
+    //                 bioTextareaIsVisible: false,
+    //                 bio: result.data.users_bio
+    //             });
+    //
+    //         })
+    //         .catch(err => {
+    //             console.log("Error in saving bio: ", err.message);
+    //         });
+
+
+
+
 
 //axios request to the server to get data about the person whos page we are on
 // we go to the page, the browser in return gives us information about the users

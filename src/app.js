@@ -7,7 +7,7 @@ import Opp from './opp';
 import Profile from './profile';
 import {ProfilePic} from './profilePic';
 
-// in App all it does, it dictates what happens when certain routes are aquired
+// in App all it does, it dictates what happens when certain routes are acquired
 // render, you send props (data!)
 ////// log out //////////////////////////////
 export function Logout(props) {
@@ -60,7 +60,7 @@ export class App extends React.Component {
             uploaderIsVisible: true
         });
     }
-    //Route exact path = "/user/:id" component = {Opp }/> ///: is a param
+
 
     render(){
         if(!this.state.id){
@@ -90,12 +90,16 @@ export class App extends React.Component {
                                     setBio={this.setBio}
                                     clickHandler={this.showUploader}
                                 />
+                            )} />
+                        <Route
+                            exact path="/user/:id"
+                            render={props => (
+                                <Opp {...props} key={props.match.url} />
                             )}
                         />
-                        <Route
-                            path="/user/:id"
-                            component={Opp}
-                        />
+
+
+
                     </div>
                 </BrowserRouter>
                 {this.state.uploaderIsVisible && <Uploader setImage={this.setImage}/>}

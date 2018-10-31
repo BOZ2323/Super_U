@@ -35,7 +35,7 @@ export default class Bio extends React.Component {
         this.setState({
             bio: e.target.value
         });
-        // console.log(this.state.bio);
+
     };
     handleSubmit() {
         axios.post('/add-bio.json', {
@@ -73,7 +73,7 @@ export default class Bio extends React.Component {
                 <div>
                     <p id="displayed-bio">Updated: {this.state.bio || this.props.bio}</p>
                     <p><button id="bttn-show-textbio" onClick={this.showTextarea}>
-                        Edit</button> your profile
+                        update profile</button>
                     </p>
                 </div>
             )

@@ -135,6 +135,17 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
             console.log('result.rows', result.rows);
         });
 });
+app.post('/opp.json/:id', (req, res)=> {
+    console.log('req.body', req.body, req.session.userId);
+    db.saveBio(req.body.bio, req.session.userId)
+        .then(results => {
+            console.log('results of saveBio:', results.rows[0]);
+            res.json(results.rows[0]);
+        }).catch(err=> {
+            console.log(err.message);
+        });
+});
+
 app.post('/add-bio.json', (req, res)=> {
     console.log('req.body', req.body, req.session.userId);
     db.saveBio(req.body.bio, req.session.userId)
@@ -143,8 +154,9 @@ app.post('/add-bio.json', (req, res)=> {
             res.json(results.rows[0]);
         }).catch(err=> {
             console.log(err.message);
-        })
-})
+        });
+});
+
 
 app.get('/api-cute-anmials', (req, res) => {
     console.log("GET /api-cute-animals");
