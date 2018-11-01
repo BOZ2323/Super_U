@@ -110,7 +110,62 @@ exports.saveBio = function(users_bio, id) {
     ];
     return db.query(q, params);
 };
+////////////////// friendship ///////////////////
+exports.getFriendship = function(user_id, potential_friend_id) {
+    return db.query(
+        `SELECT *
+        FROM friendships
+        WHERE (sender_id = $1 AND receiver_id = $2)
+        OR (receiver_id = $1 AND sender_id = $2);
+        `,
+        [user_id, potential_friend_id]
+    )
+        .then(function (results) {
+            return results.rows[0];
+        });
+};
 
+exports.sendFriendRequest = function(sender_id, receiver_id) {
+    return db.query(
+        `INSERT INTO friendships
+        (sender_id, receiver_id)
+        VALUES ($1, $2)
+        RETURNING *;
+        `,
+        [sender_id, receiver_id]
+    )
+        .then(function (results) {
+            return results.rows[0];
+        });
+};
+
+exports.acceptFriendRequest = function(sender_id, receiver_id) {
+    return db.query(
+        `UPDATE friendships
+        SET accepted = true
+        WHERE (receiver_id=$1 AND sender_id = $2)
+        OR (sender_id=$1 AND receiver_id = $2)
+        RETURNING receiver_id, sender_id, accepted, id;
+        `,
+        [sender_id, receiver_id]
+    )
+        .then(function (results) {
+            return results.rows[0];
+        });
+};
+
+exports.endFriendship = function(sender_id, receiver_id) {
+    return db.query(
+        `DELETE FROM friendships
+        WHERE (receiver_id=$1 AND sender_id = $2)
+        OR (sender_id=$1 AND receiver_id = $2);
+        `,
+        [sender_id, receiver_id]
+    )
+        .then(function (results) {
+            return results.rows[0];
+        });
+};
 
 exports.upload = function(image_url, id) {
     const q = `

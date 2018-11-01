@@ -132,19 +132,59 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
     db.upload(imgUrl, req.session.userId)
         .then(result => {
             res.json(result.rows);
-            console.log('result.rows', result.rows);
+
         });
 });
 ////////////// opp /////////////////////////////////////////
 app.get('/opp.json/:id', (req, res)=> {
     db.getOppData(req.params.id)
         .then(results => {
-            console.log('results of getOppData:', results.rows[0]);
+
             res.json(results.rows[0]);
         }).catch(err=> {
             console.log(err.message);
         });
 });
+
+/////////////// make friendsrequest /////////////////////
+
+/////////// if buttonText = makeFriendsRequest
+
+app.get('/friendship-status', function(req, res) {
+    db.getFriendship(req.session.userId, req.query.id)
+        .then(results => {
+            res.json(results);
+        })
+        .catch(err => {console.log(err);});
+});
+
+app.post('/send-friend-request', function(req, res) {
+    db.sendFriendRequest(req.session.userId, req.body.id)
+        .then(results => {
+            res.json(results);
+        })
+        .catch(err => {console.log(err);});
+});
+
+app.post('/accept-friend-request', function(req, res) {
+    db.acceptFriendRequest(req.session.userId, req.body.receiver_id)
+        .then(results => {
+            res.json(results);
+        })
+        .catch(err => {console.log(err);});
+});
+
+app.post('/end-friendship', function(req, res) {
+    db.endFriendship(req.session.userId, req.body.receiver_id)
+        .then(results => {
+            res.json(results);
+        })
+        .catch(err => {console.log(err);});
+});
+
+
+
+
 
 ////////////// bio /////////////////////////////////////////
 app.post('/add-bio.json', (req, res)=> {
@@ -199,3 +239,9 @@ app.get('*', function(req, res) {
 app.listen(8080, function() {
     console.log("I'm listening.");
 });
+
+
+// if(data.rows[0].accepted){
+//     res.json({
+//         stateButtonText: 'End Friendship'
+//     });

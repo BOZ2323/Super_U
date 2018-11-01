@@ -20,13 +20,3 @@ export function Welcome() {
         </div>
     );
 }
-
-
-// export function Welcome(props) {
-//
-//     return (
-//         <div>
-//             <Login />
-//         </div>
-//     );
-// }

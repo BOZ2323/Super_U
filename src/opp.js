@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import  FriendshipButton  from './friendshipButton';
 
 
 export default class Opp extends React.Component {
@@ -14,8 +16,7 @@ export default class Opp extends React.Component {
     componentDidMount(){
         console.log("opp component mounted");
         const oppId = this.props.match.params.id;
-        console.log('opps id:', oppId);
-        console.log('this.props.match', this.props.match);
+
         axios.get("/opp.json/" + oppId)
             .then((data) => {
                 console.log('data',data);
@@ -34,12 +35,18 @@ export default class Opp extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hi {this.state.first}{this.state.last}!!</h1>
+                <h1>Hi {this.state.first} {this.state.last}!!</h1>
                 <img src={this.state.image_url} />
                 <p>
                     {this.state.email}
                     {this.state.user_bio}
                 </p>
+
+                <FriendshipButton receiverId={this.props.match.params.id}></FriendshipButton>
+
+
+
+
             </div>
         );
     }
@@ -49,6 +56,9 @@ export default class Opp extends React.Component {
 
 
 
+
+
+// <FriendshipButton friendsId={this.props.match.params.id}/>
 
 
 
