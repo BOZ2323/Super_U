@@ -177,3 +177,21 @@ exports.upload = function(image_url, id) {
     const params = [image_url, id];
     return db.query(q, params);
 };
+
+exports.getFriendsOrWannabees = function(id) {
+    return db
+        .query(
+            `SELECT super_users.id, first, last, image_url, accepted
+    FROM friendships
+    JOIN super_users
+    ON (accepted = false AND receiver_id = $1 AND sender_id = super_users.id)
+    OR (accepted = true AND receiver_id= $1 AND sender_id = super_users.id)
+    OR (accepted = true AND sender_id = $1 AND receiver_id = super_users.id)
+`,
+            [id || null]
+        )
+        .then(data => {
+            console.log("result getFriendsOrWannabees:", data.rows);
+            return data.rows;
+        });
+};

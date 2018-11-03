@@ -6,6 +6,8 @@ import { Uploader } from './uploader';
 import Opp from './opp';
 import Profile from './profile';
 import {ProfilePic} from './profilePic';
+import Friends from './friends';
+import {createStore} from 'redux';
 
 // in App all it does, it dictates what happens when certain routes are acquired
 // render, you send props (data!)
@@ -75,6 +77,8 @@ export class App extends React.Component {
                     id ={this.state.id}
                     clickHandler={this.showUploader}
                 />
+                {/*friends button*/}
+                <a className="buttonToFriends" href="/friends">Friends</a>
                 <img src = "/logo.png"/>
                 <BrowserRouter>
                     <div>
@@ -97,6 +101,8 @@ export class App extends React.Component {
                                 <Opp {...props} key={props.match.url} />
                             )}
                         />
+                        <Route path="/friends" component={Friends} />
+
 
 
 

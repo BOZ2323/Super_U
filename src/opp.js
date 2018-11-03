@@ -43,6 +43,7 @@ export default class Opp extends React.Component {
                 </p>
 
                 <FriendshipButton receiverId={this.props.match.params.id}></FriendshipButton>
+                <button><Link to="/friends">friends</Link></button>
 
 
 

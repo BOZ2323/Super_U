@@ -3,6 +3,7 @@ import {ProfilePic} from './profilePic';
 import Bio from './bio';
 import axios from './axios';
 import { Uploader } from './uploader';
+import { Link } from 'react-router-dom';
 
 
 
@@ -25,6 +26,7 @@ export default class Profile extends React.Component {
                     size="jumbo"
                 />
                 <Bio bio={this.props.bio} setBio={this.props.setBio} />
+                <button><Link to="/friends">friends</Link></button>
             </div>
         );
     }

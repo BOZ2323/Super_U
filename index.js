@@ -1,6 +1,11 @@
 // this is for the middleware
 const express = require('express');
 const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server, { origins: 'localhost:8080' });
+
+// const io = require('socket.io')(server, { origins: 'localhost:8080 mycorrecthorsemuffin' });
+
 
 var multer = require('multer');
 var uidSafe = require('uid-safe');
@@ -225,6 +230,17 @@ app.get('/user', function (req, res){
             res.json(rows[0]);
         });
 });
+////////////// friends or wannabees ///////////////
+
+app.get("/friendsOrWannabees", function(req, res) {
+    return db.getFriendsOrWannabees(req.session.userId).then(data => {
+        console.log("friendsOrWannabees server result data:", data);
+        res.json({ data });
+    }).catch(err =>{
+        console.log("serverside err friendsOrWannabees: ", err);
+    });
+});
+
 
 app.get('*', function(req, res) {
     if (!req.session.userId){
@@ -240,8 +256,21 @@ app.listen(8080, function() {
     console.log("I'm listening.");
 });
 
+/// with socket.io, do:
+// io.on('connection', function(socket) {
+// console.log(`socket with the id ${socket.id} is now connected`);
+//
+// socket.on('disconnect', function() {
+//     console.log(`socket with the id ${socket.id} is now disconnected`);
+// });
 
-// if(data.rows[0].accepted){
-//     res.json({
-//         stateButtonText: 'End Friendship'
-//     });
+//socket.emit('Welcome'){
+//chicken: funky;
+//)};
+
+//if you want to sent message to everybody but this one socket
+//socket.broadcast.emit('yo') //send this mess to everybody but 'yo'
+
+// server.listen(8080, function() {
+//     console.log("I'm listening.");
+// });
