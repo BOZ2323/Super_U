@@ -29,6 +29,7 @@ class Friends extends React.Component {
 }
 
 
+
 const mapStateToProps = state => {
     return{
         friendsWannabees: state.friendsWannabees
@@ -36,22 +37,3 @@ const mapStateToProps = state => {
 };
 
 export default connect (mapStateToProps)(Friends);
-
-
-// render() {
-//     const { friendsWannabees, dispatch } = this.props;
-//     if (!friendsWannabees) {
-//         return null;
-//     }else{
-//         return (
-//             <div>
-//                 <h1>Hi friends: {this.props.friendsWannabees})!!</h1>
-//
-//
-//
-//
-//             </div>
-//         );
-//     }
-// }
-// }

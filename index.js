@@ -40,10 +40,21 @@ const cookieParser = require("cookie-parser");
 const cookieSession = require('cookie-session');
 
 
-app.use(cookieSession({
-    secret: `Feel the fear and do it anyway.`,
-    maxAge: 1000 * 60 * 60 * 24 * 14
-}));
+// app.use(cookieSession({
+//     secret: `Feel the fear and do it anyway.`,
+//     maxAge: 1000 * 60 * 60 * 24 * 14
+// }));
+
+
+const cookieSessionMiddleware = cookieSession({
+    secret: `I'm always angry.`,
+    maxAge: 1000 * 60 * 60 * 24 * 90
+});
+
+app.use(cookieSessionMiddleware);
+io.use(function(socket, next) {
+    cookieSessionMiddleware(socket.request, socket.request.res, next);
+});
 
 
 app.use(bodyParser.json());
@@ -171,6 +182,8 @@ app.post('/send-friend-request', function(req, res) {
         .catch(err => {console.log(err);});
 });
 
+//// accepting friends request ////////
+
 app.post('/accept-friend-request', function(req, res) {
     db.acceptFriendRequest(req.session.userId, req.body.receiver_id)
         .then(results => {
@@ -178,6 +191,9 @@ app.post('/accept-friend-request', function(req, res) {
         })
         .catch(err => {console.log(err);});
 });
+
+
+//// ending friendship ////////
 
 app.post('/end-friendship', function(req, res) {
     db.endFriendship(req.session.userId, req.body.receiver_id)
@@ -255,22 +271,57 @@ app.get('*', function(req, res) {
 app.listen(8080, function() {
     console.log("I'm listening.");
 });
+////////////// socket io /////////////////////
+let onlineUsers = [];
 
-/// with socket.io, do:
-// io.on('connection', function(socket) {
-// console.log(`socket with the id ${socket.id} is now connected`);
-//
-// socket.on('disconnect', function() {
-//     console.log(`socket with the id ${socket.id} is now disconnected`);
-// });
 
-//socket.emit('Welcome'){
-//chicken: funky;
-//)};
+io.on('connection', function(socket) {
+    console.log(`socket with the id ${socket.id} is now connected`);
+    // socket.request.session.user.id
+    console.log(socket.request.session); // shows userId and everything in the session
 
-//if you want to sent message to everybody but this one socket
-//socket.broadcast.emit('yo') //send this mess to everybody but 'yo'
+    onlineUsers.push({
+        userId: socket.request.session.userId,
+        socketId: socket.id
+    });
+    console.log('onlineUsers', onlineUsers);
 
-// server.listen(8080, function() {
-//     console.log("I'm listening.");
-// });
+    let ids = onlineUsers.map(user => {
+        return user.userId; //array of userIds that was extracted from onlineUsers array
+    });
+
+    db.getUsersByIds(ids).then(results => {
+        console.log("results from getUsersByIds", results.rows);
+        socket.emit('onlineUsersEvent', results.rows); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
+    });
+
+    // take newly connected user's userId
+    //give it to the db to get that users first, last, profile public//once we have that info, broadcat userJoined event.
+    //and include response from db as message
+
+    // broadcast emits event to everyone BUT person who just connected
+
+    /////////// broadcast and emit //////////
+
+    // socket.broadcast.emit('userJoined', somePayload); // broadcast sends the list of onlineUsers
+    //
+    // socket.on('disconnect', function(){
+    //     console.log(`socket with the id ${socket} is now disconneted`);
+
+    //io.sockets
+    // });
+
+    // socket.on('disconnect', function() {
+    //     console.log(`socket with the id ${socket.id} is now disconnected`);
+    // });
+    //
+    // socket.on('thanks', function(data) {
+    //     console.log(data);
+    // });
+    //
+    // socket.emit('welcome', {
+    //     message: 'Welome. It is nice to see you'
+    // });
+});
+
+////////////////// /////////// ////////////////////

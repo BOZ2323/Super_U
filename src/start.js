@@ -13,7 +13,8 @@ import reducer from './reducer.js';
 import {composeWithDevTools} from 'redux-devtools-extension';
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxPromise)));
 
-
+// socket stuff
+import {initSocket} from './socket';
 
 // const socket = io.connect();
 //
@@ -25,12 +26,13 @@ let elem;
 if (location.pathname === '/welcome'){
     elem = <Welcome />
 } else{
-    elem = (
+    elem = (initSocket(store), //pass it the whole redux store as argument
+    (
         <Provider store = {store}>
             <App />
         </Provider>
     )
-
+    );
 
 }
 

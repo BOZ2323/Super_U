@@ -8,36 +8,43 @@ export async function getFriendsOrWannabees() {
         type: 'RECEIVE FRIENDS OR WANNABEES',
         friendsWannabees: data
     };
+
 }
 
-
-//////////// from Davids notnotnot ////////////////////////
-
-
-export async function receiveUsers() {
-    const { data } = await axios.get('/users');
+export async function acceptFriendRequest(id) {
+    const { data } = await axios.post('/accept-friend-request', { id });
     return {
-        type: 'RECEIVE_USERS',
-        users: data.users
+        type: 'ACCEPT_REQUEST',
+        status: id
     };
 }
 
-export async function hotify(id) {
-    console.log(
-        await axios.post('/hot/' + id)
-    );
+export async function unfriend(id) {
+    const { data } = await axios.post('/end-friendship', { id });
     return {
-        type: 'HOTIFY',
-        id
+        type: 'END_FRIENDSHIP',
+        status: id
     };
 }
 
-export async function notify(id) {
-    console.log(
-        await axios.post('/not/' + id)
-    );
+export function onlineUsers(onlineUsers){
+    console.log("onlineUsers action fired!", onlineUsers);
     return {
-        type: 'NOTIFY',
-        id
+        type: 'END_FRIENDSHIP',
+        status: id
+    };
+}
+export function userJoined(userWhoJoined){
+    console.log("onlineUsers action fired!", userWhoJoined);
+    return {
+        type: 'END_FRIENDSHIP',
+        status: id
+    };
+}
+export function userLeft(userWhoJoined){
+    console.log("onlineUsers action fired!", userWhoJoined);
+    return {
+        type: 'END_FRIENDSHIP',
+        status: id
     };
 }
