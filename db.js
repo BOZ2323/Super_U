@@ -197,6 +197,6 @@ exports.getFriendsOrWannabees = function(id) {
 };
 
 exports.getUsersByIds = function (arrayOfIds) {
-    const query = `SELECT id, first, last, img_url FROM super_users WHERE id = ANY($1)`;
+    const query = `SELECT id, first, last, image_url FROM super_users WHERE id = ANY($1)`;
     return db.query(query, [arrayOfIds]);
 };

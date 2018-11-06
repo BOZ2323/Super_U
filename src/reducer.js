@@ -1,32 +1,48 @@
+import {
+    ACTION_UNFRIEND,
+    ACTION_ACCEPT_REQUEST,
+    ACTION_GET_FRIENDS_WANNA,
+    ACTION_GET_ONLINE_USERS
+} from './constants';
+
 console.log("/reducer.js works!");
 
-export default function(state = {}, action) {
-    if (action.type == 'RECEIVE FRIENDS OR WANNABEES') {
+export default function( state = {}, action ) {
+    if (action.type == ACTION_GET_FRIENDS_WANNA){
+        console.log('state', state.friendsWannabees);
         state = {
             ...state,
             friendsWannabees: action.friendsWannabees
-
         };
-        console.log('reducer friendsWannabees', state.friendsWannabees);
+    } else if (action.type === ACTION_ACCEPT_REQUEST){
+        state =  {
+            ...state,
+            friendsWannabees: state.friendsWannabees.map(
+                friend => {
+                    if(friend.id === action.value){
+                        return {
+                            ...friend,
+                            accepted: true
+                        };
+                    } else {
+                        return friend;
+                    }
+                }
+            )
+        };
+    } else if (action.type === ACTION_UNFRIEND){
+        state =  {
+            ...state,
+            friendsWannabees: state.friendsWannabees.filter(
+                friend => (friend.id !== action.value )
+            )
+        };
+    }else if (action.type === ACTION_GET_ONLINE_USERS){
+        state =  {
+            ...state,
+            onlineUsers: action.value
+            
+        };
     }
-    // if (action.type == 'HOTIFY' || action.type == 'NOTIFY') {
-    //     state = {
-    //         ...state,
-    //         users: state.users.map(
-    //             user => {
-    //                 if (user.id == action.id) {
-    //                     return {
-    //                         ...user,
-    //                         hot: action.type == 'HOTIFY'
-    //                     };
-    //                 } else {
-    //                     return user;
-    //                 }
-    //             }
-    //         )
-    //     };
-    // }
     return state;
 }
-
-// the action.users in line 7 is the array I get back from the server

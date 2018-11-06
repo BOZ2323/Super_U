@@ -2,38 +2,72 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {
     getFriendsOrWannabees,
-    endFriendship,
-    acceptRequest
+    unfriend,
+    acceptFriendRequest
 } from "./actions";
 import { Link } from "react-router-dom";
 
 
 class Friends extends React.Component {
-    constructor(){
-        super();
-
-    }
+    // constructor(){
+    //     super();
+    //
+    // }
     componentDidMount(){
         console.log("friends component mounted");
         this.props.dispatch(getFriendsOrWannabees());
+
+
     }
     render() {
-        const { friendsWannabees, dispatch } = this.props;
+        const { friends, wannabees, dispatch } = this.props;
+        console.log('friends', friends);
+
+        if(!friends && !wannabees) {
+            return null;
+        }
 
         return (
+
             <div>
-                <h1>Hi friends!!</h1>
+                <h1>Friends</h1>
+                {this.props.friends.map(
+                    friendsWannabees => (
+                        <div key={friendsWannabees.id}>
+                            {friendsWannabees.first} {friendsWannabees.last}
+                            <img src={friendsWannabees.imgage_url} />
+                            <button onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                        </div>
+                    )
+                )}
+                <h1>Wannabees</h1>
+                {this.props.wannabees.map(
+                    friendsWannabees => (
+                        <div key={friendsWannabees.id}>
+                            {friendsWannabees.first} {friendsWannabees.last}
+                            <img src={friendsWannabees.imgage_url} />
+
+                            <button onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
+                            {/* acceptFriendsRequest sends an action back to the reducer*/}
+                        </div>
+                    )
+                )}
             </div>
         );
     }
+
 }
-
-
-
 const mapStateToProps = state => {
-    return{
-        friendsWannabees: state.friendsWannabees
+console.log('state in mapSTate', state);
+    return {
+        friends: state.friendsWannabees && state.friendsWannabees.filter(
+            f => f.accepted
+        ),
+        wannabees: state.friendsWannabees && state.friendsWannabees.filter(
+            w => !w.accepted
+        )
     };
+
 };
 
-export default connect (mapStateToProps)(Friends);
+export default connect(mapStateToProps)(Friends);

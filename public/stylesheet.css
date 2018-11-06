@@ -11,3 +11,10 @@ h1 {
     height: 100px;
 
 }
+
+.chat-messages-container{
+    border-color: purple;
+    width: 300px;
+    height: 200px;
+    overflow-y: scroll;
+}

@@ -268,7 +268,7 @@ app.get('*', function(req, res) {
 
 ///////////////////////////////////////////////////////
 
-app.listen(8080, function() {
+server.listen(8080, function() {
     console.log("I'm listening.");
 });
 ////////////// socket io /////////////////////
@@ -293,6 +293,17 @@ io.on('connection', function(socket) {
     db.getUsersByIds(ids).then(results => {
         console.log("results from getUsersByIds", results.rows);
         socket.emit('onlineUsersEvent', results.rows); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
+    });
+    socket.on('newMessage', function(newMessage){
+        console.log("new message: ", newMessage);
+        // get the user's first, last, profile picture
+        //if you are using the arraay method, store new obj in our array.
+        // if db solution, insert the new chat messsage into our chats table1
+        // both methods require us to have create object that contains usrs firstname
+        //last, profile pic, message
+
+        io.sockets.emit('newMessage');
+
     });
 
     // take newly connected user's userId

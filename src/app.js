@@ -8,6 +8,8 @@ import Profile from './profile';
 import {ProfilePic} from './profilePic';
 import Friends from './friends';
 import {createStore} from 'redux';
+import OnlineUsers from './onlineUsers';
+import Chat from './chat';
 
 // in App all it does, it dictates what happens when certain routes are acquired
 // render, you send props (data!)
@@ -102,11 +104,8 @@ export class App extends React.Component {
                             )}
                         />
                         <Route path="/friends" component={Friends} />
-
-                        
-
-
-
+                        <Route path="/onlineUsers" component={OnlineUsers} />
+                        <Route path="/chat" component={Chat} />
 
                     </div>
                 </BrowserRouter>
