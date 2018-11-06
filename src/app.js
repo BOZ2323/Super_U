@@ -11,12 +11,22 @@ import {createStore} from 'redux';
 import OnlineUsers from './onlineUsers';
 import Chat from './chat';
 
+
+
+
 // in App all it does, it dictates what happens when certain routes are acquired
 // render, you send props (data!)
 ////// log out //////////////////////////////
-export function Logout(props) {
-    return <a href='/logout'>Log out</a>
+
+export function Logout() {
+    return <a className="logoutButton" href='/logout'>Log out</a>
+
 }
+///////// LINK TO MY PROFILE ///////////////////////
+export function LinkToProfile() {
+    return <a className="to-my-profile-bttn" href='/'>Profile</a>
+}
+
 
 
 export class App extends React.Component {
@@ -80,7 +90,8 @@ export class App extends React.Component {
                     clickHandler={this.showUploader}
                 />
                 {/*friends button*/}
-                <a className="buttonToFriends" href="/friends">Friends</a>
+                <a className="buttonLink" href="/friends">Friends</a>
+                <a className="buttonLink" href="/logout">logout</a>
                 <img src = "/logo.png"/>
                 <BrowserRouter>
                     <div>
@@ -106,6 +117,7 @@ export class App extends React.Component {
                         <Route path="/friends" component={Friends} />
                         <Route path="/onlineUsers" component={OnlineUsers} />
                         <Route path="/chat" component={Chat} />
+
 
                     </div>
                 </BrowserRouter>

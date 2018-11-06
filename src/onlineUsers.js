@@ -10,8 +10,16 @@ class OnlineUsers extends React.Component{
         const { onlineUsers } = this.props;
         console.log('onlineUsers render', this.props.onlineUsers);
         return(
-            <div>onlineUsers
-                <ul>{onlineUsers.map(user => (<li key={user.id}>{user.first} {user.last}</li>)}</ul>)
+            <div>
+                <h1>onlineUsers</h1>
+                {onlineUsers.map(
+                    user => (
+                        <ul key={user.id}>
+                            <li>
+                                {user.first} {user.last}
+                            </li>
+                        </ul>
+                    ))}
             </div>
         )
     }

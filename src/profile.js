@@ -27,6 +27,9 @@ export default class Profile extends React.Component {
                 />
                 <Bio bio={this.props.bio} setBio={this.props.setBio} />
                 <button><Link to="/friends">friends</Link></button>
+                
+
+
             </div>
         );
     }

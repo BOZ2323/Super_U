@@ -2,7 +2,9 @@ import {
     ACTION_UNFRIEND,
     ACTION_ACCEPT_REQUEST,
     ACTION_GET_FRIENDS_WANNA,
-    ACTION_GET_ONLINE_USERS
+    ACTION_GET_ONLINE_USERS,
+    ACTION_LOGGED_IN,
+    ACTION_LOGGED_OUT
 } from './constants';
 
 console.log("/reducer.js works!");
@@ -41,7 +43,7 @@ export default function( state = {}, action ) {
         state =  {
             ...state,
             onlineUsers: action.value
-            
+
         };
     }
     return state;

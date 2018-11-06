@@ -40,14 +40,14 @@ export function onlineUsersEvent(onlineUsers){
 export function userJoined(userWhoJoined){
     console.log("onlineUsers action fired!", userWhoJoined);
     return {
-        type: 'END_FRIENDSHIP',
-        status: id
+        type: 'LOGGED_IN',
+        value: userWhoJoined
     };
 }
-export function userLeft(userWhoJoined){
-    console.log("onlineUsers action fired!", userWhoJoined);
+export function userLeft(userWhoLeft){
+    console.log("Action: Users who logged left", userWhoLeft);
     return {
-        type: 'END_FRIENDSHIP',
-        status: id
+        type: 'LOGGED_OUT',
+        value: userWhoLeft
     };
 }

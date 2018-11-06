@@ -1,6 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from './axios';
+import { Link } from "react-router-dom";
+
+
+export class Logout extends React.Component {
+    render(){
+        return (
+            <div>
+                <button><Link to="/logout">log out</Link></button>
+            </div>
+        );
+    }
+}
 
 
 export class Login extends React.Component {

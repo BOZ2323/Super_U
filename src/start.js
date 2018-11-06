@@ -16,12 +16,6 @@ const store = createStore(reducer, composeWithDevTools(applyMiddleware(reduxProm
 // socket stuff
 import {initSocket} from './socket';
 
-// const socket = io.connect();
-//
-// socket.on('welcome', data => {
-//
-// }
-
 let elem;
 if (location.pathname === '/welcome'){
     elem = <Welcome />

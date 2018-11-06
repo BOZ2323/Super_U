@@ -18,3 +18,7 @@ h1 {
     height: 200px;
     overflow-y: scroll;
 }
+.buttonLink {
+    font-size: 30px;
+    color: red;
+}

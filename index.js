@@ -257,6 +257,12 @@ app.get("/friendsOrWannabees", function(req, res) {
     });
 });
 
+app.get('/logout', (req, res) => {
+    req.session = null;
+    console.log('SESSION:', req.session);
+    res.redirect('/');
+});
+
 
 app.get('*', function(req, res) {
     if (!req.session.userId){
@@ -302,7 +308,7 @@ io.on('connection', function(socket) {
         // both methods require us to have create object that contains usrs firstname
         //last, profile pic, message
 
-        io.sockets.emit('newMessage');
+        io.sockets.emit('newMessage', newMessageObj);
 
     });
 
