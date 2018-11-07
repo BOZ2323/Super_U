@@ -1,12 +1,19 @@
 import axios from './axios';
-import {ACTION_UNFRIEND, ACTION_ACCEPT_REQUEST, ACTION_GET_FRIENDS_WANNA, ACTION_GET_ONLINE_USERS} from './constants';
+import {
+    ACTION_UNFRIEND,
+    ACTION_ACCEPT_REQUEST,
+    ACTION_GET_FRIENDS_WANNA,
+    ACTION_GET_ONLINE_USERS,
+    ACTION_LOGGED_IN,
+    ACTION_LOGGED_OUT
+} from './constants';
 
 
 // in this file  all the axios requests are dispatched
 
 export async function getFriendsOrWannabees() {
     const { data } = await axios.get('/friendsOrWannabees');
-    console.log('data action', data)
+    console.log('data action', data);
     return {
         type: ACTION_GET_FRIENDS_WANNA,
         friendsWannabees: data.data
@@ -38,16 +45,16 @@ export function onlineUsersEvent(onlineUsers){
     };
 }
 export function userJoined(userWhoJoined){
-    console.log("onlineUsers action fired!", userWhoJoined);
+    console.log("userWhoJoined in action!", userWhoJoined);
     return {
-        type: 'LOGGED_IN',
+        type: ACTION_LOGGED_IN,
         value: userWhoJoined
     };
 }
 export function userLeft(userWhoLeft){
-    console.log("Action: Users who logged left", userWhoLeft);
+    console.log("Action: onlineUsers action userWhoLeft!", userWhoLeft);
     return {
-        type: 'LOGGED_OUT',
+        type: ACTION_LOGGED_OUT,
         value: userWhoLeft
     };
 }

@@ -40,11 +40,19 @@ export default function( state = {}, action ) {
             )
         };
     }else if (action.type === ACTION_GET_ONLINE_USERS){
+        console.log('action',action);
         state =  {
             ...state,
             onlineUsers: action.value
 
         };
+    }else if (action.type === ACTION_LOGGED_IN){
+        state =  {
+            ...state,
+            onlineUsers: [...state.onlineUsers, action.value]
+
+        };
     }
+
     return state;
 }

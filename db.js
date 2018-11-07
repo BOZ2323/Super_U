@@ -200,3 +200,9 @@ exports.getUsersByIds = function (arrayOfIds) {
     const query = `SELECT id, first, last, image_url FROM super_users WHERE id = ANY($1)`;
     return db.query(query, [arrayOfIds]);
 };
+exports.getUserWhoJoined = function (id) {
+    const query = `SELECT * FROM super_users WHERE id = $1`;
+    console.log('query', id);
+    return db.query(query, [id]);
+
+};

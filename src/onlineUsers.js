@@ -8,7 +8,7 @@ class OnlineUsers extends React.Component{
     }
     render(){
         const { onlineUsers } = this.props;
-        console.log('onlineUsers render', this.props.onlineUsers);
+    
         return(
             <div>
                 <h1>onlineUsers</h1>
@@ -31,7 +31,7 @@ OnlineUsers.defaultProps = {
 }
 
 const mapStateToProps = state => {
-console.log('state in mapSTate', state);
+
     return {
         onlineUsers: state.onlineUsers
     };
