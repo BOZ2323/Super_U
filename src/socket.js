@@ -23,17 +23,11 @@ export function initSocket(store){
             store.dispatch(userJoined(userWhoJoined));
 
         });
-        // socket.on('newMessage', function(newMessage){
-        //     console.log( "new message in front:", newMessage);
-        //     //dispatch, take the new obj and store it in the chats array in redux, that you created in part 1
-        // });
+        socket.on('userLeft', (userWhoLeft) => {
+            console.log('socket.js userLeft', userWhoLeft);
+            store.dispatch(userLeft(userWhoLeft));
 
-        // // this is where we will listen for socket events
-        // // ie where you will write our front-end socket code
-        // // this fn is responsible for invoking socket
-        // socket.on('userLeft', (userWhoLeft) => {
-        //     store.dispatch(userLeft(userWhoLeft));
-        // })
+        });
     }
     return socket;
 }

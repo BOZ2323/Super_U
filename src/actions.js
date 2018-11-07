@@ -5,7 +5,7 @@ import {
     ACTION_GET_FRIENDS_WANNA,
     ACTION_GET_ONLINE_USERS,
     ACTION_USER_JOINED,
-    ACTION_LOGGED_OUT
+    ACTION_USER_LEFT
 } from './constants';
 
 
@@ -51,10 +51,10 @@ export function userJoined(userWhoJoined){
         value: userWhoJoined
     };
 }
-export function userLeft(userWhoLeft){
-    console.log("Action: onlineUsers action userWhoLeft!", userWhoLeft);
+export function userLeft(userId){
+    console.log("userWhoLeft action fired!", userId);
     return {
-        type: ACTION_LOGGED_OUT,
-        value: userWhoLeft
+        type: ACTION_USER_LEFT,
+        userId
     };
 }
