@@ -4,7 +4,7 @@ import {
     ACTION_ACCEPT_REQUEST,
     ACTION_GET_FRIENDS_WANNA,
     ACTION_GET_ONLINE_USERS,
-    ACTION_LOGGED_IN,
+    ACTION_USER_JOINED,
     ACTION_LOGGED_OUT
 } from './constants';
 
@@ -45,9 +45,9 @@ export function onlineUsersEvent(onlineUsers){
     };
 }
 export function userJoined(userWhoJoined){
-    console.log("userWhoJoined in action!", userWhoJoined);
+    console.log("userWhoJoined action fired!", userWhoJoined);
     return {
-        type: ACTION_LOGGED_IN,
+        type: ACTION_USER_JOINED,
         value: userWhoJoined
     };
 }

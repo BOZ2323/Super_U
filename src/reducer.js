@@ -3,7 +3,7 @@ import {
     ACTION_ACCEPT_REQUEST,
     ACTION_GET_FRIENDS_WANNA,
     ACTION_GET_ONLINE_USERS,
-    ACTION_LOGGED_IN,
+    ACTION_USER_JOINED,
     ACTION_LOGGED_OUT
 } from './constants';
 
@@ -40,13 +40,13 @@ export default function( state = {}, action ) {
             )
         };
     }else if (action.type === ACTION_GET_ONLINE_USERS){
-        console.log('action',action);
+
         state =  {
             ...state,
             onlineUsers: action.value
 
         };
-    }else if (action.type === ACTION_LOGGED_IN){
+    }else if (action.type === ACTION_USER_JOINED){
         state =  {
             ...state,
             onlineUsers: [...state.onlineUsers, action.value]

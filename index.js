@@ -281,6 +281,7 @@ server.listen(8080, function() {
 let onlineUsers = [];
 
 
+
 io.on('connection', function(socket) {
     console.log(`socket with the id ${socket.id} is now connected`);
     // socket.request.session.user.id
@@ -290,21 +291,30 @@ io.on('connection', function(socket) {
         userId: socket.request.session.userId,
         socketId: socket.id
     });
+
+
+
+
+
     console.log('onlineUsers', onlineUsers);
+
 
     let ids = onlineUsers.map(user => {
         return user.userId; //array of userIds that was extracted from onlineUsers array
 
     });
-    // onlineUsers = onlineUsers.filter(
-    //     user => user.socketId != socket.id
-    // );
+    let counter = 0;
 
-    if (ids.indexOf(socket.request.session.userId) < ids.length - 1) {
-        // console.log('ids.indexOf(socket.request.session.userId)', ids.indexOf(socket.request.session.userId), ids.length);
-        console.log('socketId of user just joined', socket.request.session.userId);
+    for(let i=0; i<onlineUsers.length; i++){
+        if (onlineUsers[i].userId === socket.request.session.userId){
+            counter ++;
+        }
+
+
+    }
+    if (counter === 1){
         db.getUserWhoJoined(socket.request.session.userId).then(results => {
-            console.log("results from getUserWhoJoined", results.rows);
+            console.log("USER WHO JOINED RESULTS", results.rows);
 
             socket.broadcast.emit('userJoined', results.rows[0]); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
         }).catch(err=> {
@@ -314,8 +324,24 @@ io.on('connection', function(socket) {
 
     }
 
+    // console.log('ids', ids);
+    // console.log('ids.indexOf',ids.indexOf(socket.request.session.userId));
+    // if (ids.indexOf(socket.request.session.userId)) {
+    //     // console.log('ids.indexOf(socket.request.session.userId)', ids.indexOf(socket.request.session.userId), ids.length);
+    //     console.log('socketId of user just joined', socket.request.session.userId);
+    //     db.getUserWhoJoined(socket.request.session.userId).then(results => {
+    //         console.log("results from getUserWhoJoined", results.rows);
+    //
+    //         socket.broadcast.emit('userJoined', results.rows[0]); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
+    //     }).catch(err=> {
+    //         console.log('error in socket.io userJoined',err.message);
+    //     });
+    //
+    //
+    // }
+
     db.getUsersByIds(ids).then(results => {
-        console.log("results from getUsersByIds", results.rows);
+        console.log("results emitted to onlineUserEvent", results.rows);
         socket.emit('onlineUsersEvent', results.rows); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
     });
     socket.on('newMessage', function(newMessage){
@@ -341,7 +367,10 @@ io.on('connection', function(socket) {
     // socket.broadcast.emit('userJoined', somePayload); // broadcast sends the list of onlineUsers
     //
     socket.on('disconnect', function(){
-        console.log(`socket with the id ${socket} is now disconneted`);
+        onlineUsers = onlineUsers.filter(
+            user => user.socketId != socket.id
+        );
+
 
 
     });
