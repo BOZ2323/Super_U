@@ -6,7 +6,8 @@ import {
     onlineUsersEvent,
     userJoined,
     userLeft,
-    newMessage
+    displayMessage,
+    showLastTenMessages
 } from "./actions";
 let socket;
 
@@ -29,9 +30,14 @@ export function initSocket(store){
             store.dispatch(userLeft(userWhoLeft));
 
         });
-        socket.on('newMessage', (message) => {
-            console.log('socket.js userLeft', message);
-            store.dispatch(newMessage(message));
+        socket.on('showLastTenMessages', (message) => {
+            console.log('socket.js showLastTenMessages', message);
+            store.dispatch(showLastTenMessages(message));
+
+        });
+        socket.on('displayMessage', (message) => {
+            console.log('socket.js displayMessage', message);
+            store.dispatch(displayMessage(message));
 
         });
     }

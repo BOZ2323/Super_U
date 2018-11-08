@@ -5,7 +5,8 @@ import {
     ACTION_GET_ONLINE_USERS,
     ACTION_USER_JOINED,
     ACTION_USER_LEFT,
-    ACTION_DISPLAY_MESSAGE
+    ACTION_DISPLAY_MESSAGE,
+    ACTION_DISPLAY_10_MESSAGES
 } from './constants';
 
 console.log("/reducer.js works!");
@@ -54,17 +55,23 @@ export default function( state = {}, action ) {
 
         };
     }else if (action.type === ACTION_USER_LEFT){
-        console.log('ACTION state', state);
         state =  {
             ...state,
             onlineUsers: [...state.onlineUsers.filter(user => user.id !== action.userId)]
 
         };
-    }else if (action.type === ACTION_DISPLAY_MESSAGE){
-        console.log('ACTION state', state);
+    }else if (action.type === ACTION_DISPLAY_10_MESSAGES){
+        console.log('10 messages reducer', action);
         state =  {
             ...state,
-            messages: [...state.onlineUsers.filter(user => user.id !== action.userId)]
+            message: action.message
+
+        };
+    }else if (action.type === ACTION_DISPLAY_MESSAGE){
+        console.log('display new messagereducer', action);
+        state =  {
+            ...state,
+            message: [...state.message, action.message]
 
         };
 

@@ -324,18 +324,42 @@ io.on('connection', function(socket) {
     socket.on('newMessage', function(message){
         console.log("new message: ", message);
         db.saveMessages(socket.request.session.userId, message).then(chatMessages => {
-            console.log('results getMessageFromDb', chatMessages);
-            io.sockets.emit('newMessage', chatMessages.rows[0].message);
-        })
-            .catch(err => {
-                console.log('ERR in saveMessages: ', err.message);
-            });
+            console.log('results getMessageFromDb', chatMessages.rows[0].id);
+            db.getUserById(socket.request.session.userId)
+                .then(chatter => {
+                    console.log('RESULT of getUserById for CHAT: ', chatter);
+                    let chatterObj= {
+                        first: chatter.rows[0].first,
+                        last: chatter.rows[0].last,
+                        img_url: chatter.rows[0].img_url,
+                        created_at: chatMessages.rows[0].created_at,
+                        message: chatMessages.rows[0].message
+                    };
+                    console.log('CHATTER OBJ: ', chatterObj);
+                    io.sockets.emit('displayMessage', chatterObj);
+                })
+
+                .catch(err => {
+                    console.log('ERR in saveMessages: ', err.message);
+                });
         // get the user's first, last, profile picture
         //if you are using the arraay method, store new obj in our array.
         // if db solution, insert the new chat messsage into our chats table1
         // both methods require us to have create object that contains usrs firstname
         //last, profile pic, message
+        });
     });
+
+
+    db.showLastTenMessages()
+        .then(tenMessages => {
+            console.log("tenMessages:", tenMessages);
+            io.sockets.emit("showLastTenMessages", tenMessages.reverse());
+        })
+        .catch(err => {
+            console.log("err in tenMessages ", err.message);
+            return;
+        });
 
 
     socket.on('disconnect', function(){
@@ -352,15 +376,7 @@ io.on('connection', function(socket) {
         }
 
 
+    }); //socket.on
 
 
-
-
-
-
-
-    });
 });
-
-
-////////////////// /////////// ////////////////////

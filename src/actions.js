@@ -6,7 +6,8 @@ import {
     ACTION_GET_ONLINE_USERS,
     ACTION_USER_JOINED,
     ACTION_USER_LEFT,
-    ACTION_DISPLAY_MESSAGE
+    ACTION_DISPLAY_MESSAGE,
+    ACTION_DISPLAY_10_MESSAGES
 } from './constants';
 
 
@@ -59,7 +60,14 @@ export function userLeft(userId){
         userId
     };
 }
-export function newMessage(message){
+export function showLastTenMessages(message){
+    console.log("showLastTenMessages action fired!", message);
+    return {
+        type: ACTION_DISPLAY_10_MESSAGES,
+        message
+    };
+}
+export function displayMessage(message){
     console.log("displayMessage action fired!", message);
     return {
         type: ACTION_DISPLAY_MESSAGE,

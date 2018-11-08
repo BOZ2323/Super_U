@@ -97,6 +97,7 @@ exports.getUserById = function(id){
     return db.query(q, params);
 
 };
+
 exports.saveBio = function(users_bio, id) {
     const q = `
     UPDATE super_users
@@ -216,4 +217,18 @@ exports.saveMessages = function(sender_id, message) {
         [sender_id, message]
     );
 
+};
+exports.showLastTenMessages = function() {
+    return db
+        .query(
+            `SELECT super_users.first, super_users.last, super_users.image_url, chats.message, chats.id, chats.sender_id, chats.created_at
+                FROM super_users
+                JOIN chats
+                ON super_users.id = chats.sender_id
+                ORDER BY chats.id DESC LIMIT 10`
+        )
+        .then(result => {
+            console.log("showLast10Messages DB:", result.rows);
+            return result.rows;
+        });
 };

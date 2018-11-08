@@ -21,7 +21,7 @@ class OnlineUsers extends React.Component{
                         </ul>
                     ))}
             </div>
-        )
+        );
     }
 
 }

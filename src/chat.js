@@ -28,20 +28,20 @@ class Chat extends React.Component {
     }
 
     render() {
-        const { messages } = this.props;
+        const { message } = this.props;
+
         return (
             <div>
                 <h1>chat running!!</h1>
                 <div className = "chat-messages-container"ref={elem => (this.elem = elem)}>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
-                    <p>du bist spitze</p>
+                    {message.map(
+                        user => (
+                            <ul key={user.id}>
+                                <li>
+                                    {user.first} {user.last}{user.message}
+                                </li>
+                            </ul>
+                        ))}
 
 
                 </div>
@@ -52,14 +52,14 @@ class Chat extends React.Component {
     }
 
 }
-// messages.defaultProps = {
-//     messages: []
-// };
+Chat.defaultProps = {
+    message: []
+};
 
 const mapStateToProps = state => {
-    return(
-        state.message
-    );
+    return {
+        message: state.message
+    };
 
 };
 
