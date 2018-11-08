@@ -206,3 +206,14 @@ exports.getUserWhoJoined = function (id) {
     return db.query(query, [id]);
 
 };
+exports.saveMessages = function(sender_id, message) {
+    return db.query(
+        `INSERT INTO chats
+        (sender_id, message)
+        VALUES ($1, $2)
+        RETURNING *;
+        `,
+        [sender_id, message]
+    );
+
+};

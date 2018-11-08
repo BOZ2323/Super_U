@@ -5,7 +5,8 @@ import {
     ACTION_GET_FRIENDS_WANNA,
     ACTION_GET_ONLINE_USERS,
     ACTION_USER_JOINED,
-    ACTION_USER_LEFT
+    ACTION_USER_LEFT,
+    ACTION_DISPLAY_MESSAGE
 } from './constants';
 
 
@@ -56,5 +57,12 @@ export function userLeft(userId){
     return {
         type: ACTION_USER_LEFT,
         userId
+    };
+}
+export function newMessage(messages){
+    console.log("displayMessage action fired!", messages);
+    return {
+        type: ACTION_DISPLAY_MESSAGE,
+        messages
     };
 }

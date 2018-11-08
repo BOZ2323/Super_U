@@ -4,7 +4,8 @@ import {
     ACTION_GET_FRIENDS_WANNA,
     ACTION_GET_ONLINE_USERS,
     ACTION_USER_JOINED,
-    ACTION_USER_LEFT
+    ACTION_USER_LEFT,
+    ACTION_DISPLAY_MESSAGE
 } from './constants';
 
 console.log("/reducer.js works!");
@@ -57,6 +58,13 @@ export default function( state = {}, action ) {
         state =  {
             ...state,
             onlineUsers: [...state.onlineUsers.filter(user => user.id !== action.userId)]
+
+        };
+    }else if (action.type === ACTION_DISPLAY_MESSAGE){
+        console.log('ACTION state', state);
+        state =  {
+            ...state,
+            messages: state.messages
 
         };
 

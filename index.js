@@ -164,7 +164,7 @@ app.get('/opp.json/:id', (req, res)=> {
 
 /////////////// make friendsrequest /////////////////////
 
-/////////// if buttonText = makeFriendsRequest
+
 
 app.get('/friendship-status', function(req, res) {
     db.getFriendship(req.session.userId, req.query.id)
@@ -218,17 +218,6 @@ app.post('/add-bio.json', (req, res)=> {
             console.log(err.message);
         });
 });
-
-
-// app.get('/api-cute-anmials', (req, res) => {
-//     console.log("GET /api-cute-animals");
-//     db.getAnimalData().then('results.rows',results.rows);
-//     res.json({
-//         cuteAnimals: results.rows //send back an object, with the data I want, its send back to the app component as response
-//     }).catch(err =>{
-//         console.log("error in getAnimalData: ", err);
-//     })
-// });
 
 
 app.get('/welcome', function(req, res) {
@@ -331,18 +320,21 @@ io.on('connection', function(socket) {
         console.log("results emitted to onlineUserEvent", results.rows);
         socket.emit('onlineUsersEvent', results.rows); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
     });
-    socket.on('newMessage', function(newMessage){
-        console.log("new message: ", newMessage);
+
+    socket.on('newMessage', function(message){
+        console.log("new message: ", message);
+        db.saveMessages(socket.request.session.userId, message).then(chatMessages => {
+            console.log('results getMessageFromDb', chatMessages);
+            io.sockets.emit('newMessage', chatMessages);
+        })
+            .catch(err => {
+                console.log('ERR in saveMessages: ', err.message);
+            });
         // get the user's first, last, profile picture
         //if you are using the arraay method, store new obj in our array.
         // if db solution, insert the new chat messsage into our chats table1
         // both methods require us to have create object that contains usrs firstname
         //last, profile pic, message
-
-        io.sockets.emit('newMessage', newMessageObj);
-
-
-
     });
 
 
