@@ -8,7 +8,7 @@ class OnlineUsers extends React.Component{
     }
     render(){
         const { onlineUsers } = this.props;
-    
+
         return(
             <div>
                 <h1>onlineUsers</h1>
@@ -28,7 +28,7 @@ class OnlineUsers extends React.Component{
 
 OnlineUsers.defaultProps = {
     onlineUsers: []
-}
+};
 
 const mapStateToProps = state => {
 

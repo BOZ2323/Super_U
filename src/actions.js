@@ -59,10 +59,10 @@ export function userLeft(userId){
         userId
     };
 }
-export function newMessage(messages){
-    console.log("displayMessage action fired!", messages);
+export function newMessage(message){
+    console.log("displayMessage action fired!", message);
     return {
         type: ACTION_DISPLAY_MESSAGE,
-        messages
+        message
     };
 }

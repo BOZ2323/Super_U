@@ -28,6 +28,7 @@ class Chat extends React.Component {
     }
 
     render() {
+        const { messages } = this.props;
         return (
             <div>
                 <h1>chat running!!</h1>
@@ -51,10 +52,13 @@ class Chat extends React.Component {
     }
 
 }
+// messages.defaultProps = {
+//     messages: []
+// };
 
 const mapStateToProps = state => {
     return(
-        console.log('state', state)
+        state.message
     );
 
 };

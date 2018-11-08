@@ -325,7 +325,7 @@ io.on('connection', function(socket) {
         console.log("new message: ", message);
         db.saveMessages(socket.request.session.userId, message).then(chatMessages => {
             console.log('results getMessageFromDb', chatMessages);
-            io.sockets.emit('newMessage', chatMessages);
+            io.sockets.emit('newMessage', chatMessages.rows[0].message);
         })
             .catch(err => {
                 console.log('ERR in saveMessages: ', err.message);

@@ -64,7 +64,7 @@ export default function( state = {}, action ) {
         console.log('ACTION state', state);
         state =  {
             ...state,
-            messages: state.messages
+            messages: [...state.onlineUsers.filter(user => user.id !== action.userId)]
 
         };
 
