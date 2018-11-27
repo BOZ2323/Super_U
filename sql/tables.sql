@@ -13,6 +13,25 @@ CREATE TABLE super_users (
     users_bio VARCHAR (2000)
 );
 
+DROP TABLE IF EXISTS chats;
+
+CREATE TABLE chats (
+   id SERIAL PRIMARY KEY,
+   sender_id INT NOT NULL REFERENCES super_users(id),
+   message VARCHAR(1000),
+   posted_date VARCHAR(500),
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+DROP TABLE IF EXISTS friendships;
+CREATE TABLE friendships (
+   id SERIAL PRIMARY KEY,
+   sender_id INT NOT NULL REFERENCES super_users(id),
+   receiver_id INT NOT NULL REFERENCES super_users(id),
+   accepted BOOLEAN DEFAULT false
+);
+
 
 
 

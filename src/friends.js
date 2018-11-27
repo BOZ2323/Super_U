@@ -21,7 +21,7 @@ class Friends extends React.Component {
     }
     render() {
         const { friends, wannabees, dispatch } = this.props;
-        console.log('friends', friends);
+        console.log('friends and wannabees', friends, wannabees);
 
         if(!friends && !wannabees) {
             return null;
@@ -33,21 +33,21 @@ class Friends extends React.Component {
                 <h1>Friends</h1>
                 {this.props.friends.map(
                     friendsWannabees => (
-                        <div key={friendsWannabees.id}>
+                        <div className ="friendsWannabees"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
-                            <button onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                            <button className = "button_login" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
                         </div>
                     )
                 )}
                 <h1>Wannabees</h1>
                 {this.props.wannabees.map(
                     friendsWannabees => (
-                        <div key={friendsWannabees.id}>
+                        <div className ="friendsWannabees"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
 
-                            <button onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
+                            <button className = "button_login" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
                             {/* acceptFriendsRequest sends an action back to the reducer*/}
                         </div>
                     )

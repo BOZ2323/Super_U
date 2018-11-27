@@ -208,13 +208,16 @@ exports.getUserWhoJoined = function (id) {
 
 };
 exports.saveMessages = function(sender_id, message) {
+    console.log('sender_id, message', sender_id, message);
     return db.query(
         `INSERT INTO chats
         (sender_id, message)
         VALUES ($1, $2)
         RETURNING *;
         `,
+
         [sender_id, message]
+
     );
 
 };
@@ -228,7 +231,7 @@ exports.showLastTenMessages = function() {
                 ORDER BY chats.id DESC LIMIT 10`
         )
         .then(result => {
-            console.log("showLast10Messages DB:", result.rows);
+            // console.log("showLast10Messages DB:", result.rows);
             return result.rows;
         });
 };

@@ -1,16 +1,213 @@
 
-h1 {
-    color: #ce5c00;
-    padding-left: 20px;
-    font-family: Arial;
-    font-weight: bolder;
-    font-size: 30px;
+
+
+
+
+body{
+    background-image: url('/logo.png');
+    background-repeat: no-repeat;
 }
-.profilePic{
-    width: 100px;
-    height: 100px;
+
+
+main {
+    display: flex;
+}
+li{
+    list-style-type: none;
+}
+.render_div{
+    display: flex;
+    width: 100%;
+}
+
+.menu{
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    order: 3;
+    flex-grow: 1;
+}
+
+.menu_item a {
+    text-decoration: none;
+    -moz-appearance: button;
+    font-family: Arial;
+    font-weight: bold;
+    text-decoration: none;
+
+    font-size: 14px;
+    display: inline-block;
+    padding-top: 12px;
+    order: 2;
+    flex-grow: 1;
+}
+.logo{
+    float: left;
+    height: 20%;
+    order: 1;
+    flex-grow: 1;
 
 }
+.profilePic{
+    order: 4;
+    margin-top: 80px;
+    margin-right: 70px;
+
+    float: right;
+    -moz-border-radius: 20px;
+    -webkit-border-radius: 45px;
+    flex-grow: 1;
+
+
+
+
+}
+
+.button_friends{
+
+    appearance: button;
+        margin-right: 20px;
+        -moz-appearance: button;
+        font-family: Arial;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+
+        font-size: 14px;
+        color: ButtonText;
+        display: inline-block;
+        padding: 12px 18px;
+
+}
+.button_always_logout{
+    appearance: button;
+        -moz-appearance: button;
+        font-family: Arial;
+        font-weight: bold;
+        text-decoration: none;
+        font-size: 20px;
+
+        font-size: 14px;
+        color: ButtonText;
+        display: inline-block;
+        padding: 12px 18px;
+
+}
+
+}
+.button_register{
+    display: inline;
+    border: none;
+    margin-left: 40px;
+    width: 160px;
+    height: 38px;
+    font: 14px Arial;
+    /* background-color: red; */
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+}
+.button_login{
+    width: 160px;
+    margin-left: 40px;
+    display: inline;
+    border: none;
+    margin-top: 20px
+
+
+    height: 38px;
+    font: 14px Arial;
+    text-decoration: none;
+    /* background-color: red; */
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+}
+
+nav {
+    grid-area: 1 / 1 / 2/ 11;
+
+}
+.navbar_items a {
+    float: left;
+    font-size: 30px;
+    color: white;
+    padding: 30px 30px 0px 30px;
+    text-decoration: none;
+    font-family: Arial;
+}
+.navbar_items_right a {
+    float: right;
+    font-size: 30px;
+    color: white;
+    padding: 30px 30px 0px 30px;
+    text-decoration: none;
+    font-family: Arial;
+}
+.buttonLink{
+    display: inline;
+    border: none;
+    margin-left: 40px;
+    width: 160px;
+    height: 38px;
+    font: 20px Arial;
+    text-decoration: none;
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+}
+
+.register_input {
+    font-family: Arial, Sans-Serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+    background-color: white;
+    /* border: solid 1px #85b1de; */
+    width: 300px;
+    border: none;
+}
+.login_input {
+    font-family: Arial, Sans-Serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+    background-color: white;
+    /* border: solid 1px #85b1de; */
+    width: 300px;
+    border: none;
+}
+.button-link{
+    font-family: Arial, Sans-Serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    padding: 4px;
+    background-color: white;
+    /* border: solid 1px #85b1de; */
+    width: 300px;
+    border: none;
+
+}
+
+
+.button_logout{
+    display: inline;
+    border: none;
+    margin-left: 40px;
+    width: 160px;
+    height: 38px;
+    font: 14px Arial;
+    text-decoration: none;
+    /* background-color: red; */
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+}
+
+.friendsWannabees {
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+
+
 
 .chat-messages-container{
     border-color: purple;
@@ -18,7 +215,12 @@ h1 {
     height: 200px;
     overflow-y: scroll;
 }
-.buttonLink {
+
+h1 {
+    color: #ce5c00;
+    padding-left: 20px;
+    padding-top: 100px;
+    font-family: Arial;
+    font-weight: bolder;
     font-size: 30px;
-    color: red;
 }

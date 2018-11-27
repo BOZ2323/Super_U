@@ -52,12 +52,13 @@ export class Registration extends React.Component {
         return (
             <div>
                 {this.state.error && <p className="error">Something went wrong! Try again</p>}
-                <input name="first" placeholder="First name" onChange={this.handleChange} />
-                <input name="last" placeholder="Last name" onChange={this.handleChange} />
-                <input name="email" placeholder="E-Mail address" onChange={this.handleChange} />
-                <input name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-                <button onClick={this.handleSubmit}>Register</button>
-                <button><Link to="/login">Click here to Log in!</Link></button>
+                <input className = "register_input" name="first" placeholder="First name" onChange={this.handleChange} />
+                <input className = "register_input" name="last" placeholder="Last name" onChange={this.handleChange} />
+                <input className = "register_input" name="email" placeholder="E-Mail address" onChange={this.handleChange} />
+                <input className = "register_input" name="password" type="password" placeholder="Password" onChange={this.handleChange} />
+                <button className = "button_register" onClick={this.handleSubmit}>Register</button>
+                <button className = "button_login" ><Link to="/login">Click here to Log in!</Link></button>
+                
             </div>
 
         );

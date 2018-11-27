@@ -11,7 +11,7 @@ class OnlineUsers extends React.Component{
 
         return(
             <div>
-                <h1>onlineUsers</h1>
+                <h1>These users are online</h1>
                 {onlineUsers.map(
                     user => (
                         <ul key={user.id}>

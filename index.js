@@ -110,7 +110,7 @@ app.post('/register', function(req, res) {
 
 
 app.post('/login', (req, res) => {
-    console.log("login works!!");
+    // console.log("login works!!");
     db.getHashedPasswordfromDB(req.body.email)
         .then(result => {
             return db.checkPassword(req.body.password, result.rows[0].password);
@@ -175,8 +175,10 @@ app.get('/friendship-status', function(req, res) {
 });
 
 app.post('/send-friend-request', function(req, res) {
+    console.log('made it to send friend request')
     db.sendFriendRequest(req.session.userId, req.body.id)
         .then(results => {
+            console.log('json results', results);
             res.json(results);
         })
         .catch(err => {console.log(err);});
@@ -239,6 +241,7 @@ app.get('/user', function (req, res){
 
 app.get("/friendsOrWannabees", function(req, res) {
     return db.getFriendsOrWannabees(req.session.userId).then(data => {
+        console.log("friendsOrWannabees req.session.userId:", req.session.userId);
         console.log("friendsOrWannabees server result data:", data);
         res.json({ data });
     }).catch(err =>{
@@ -303,7 +306,7 @@ io.on('connection', function(socket) {
     }
     if (counter === 1){
         db.getUserWhoJoined(socket.request.session.userId).then(results => {
-            console.log("USER WHO JOINED RESULTS", results.rows);
+            // console.log("USER WHO JOINED RESULTS", results.rows);
 
             socket.broadcast.emit('userJoined', results.rows[0]); // emit to socket.io an event call onlineUsersevent and send along the payload results.rows.
         }).catch(err=> {
@@ -327,7 +330,7 @@ io.on('connection', function(socket) {
             console.log('results getMessageFromDb', chatMessages.rows[0].id);
             db.getUserById(socket.request.session.userId)
                 .then(chatter => {
-                    console.log('RESULT of getUserById for CHAT: ', chatter);
+                    // console.log('RESULT of getUserById for CHAT: ', chatter);
                     let chatterObj= {
                         first: chatter.rows[0].first,
                         last: chatter.rows[0].last,
@@ -353,7 +356,7 @@ io.on('connection', function(socket) {
 
     db.showLastTenMessages()
         .then(tenMessages => {
-            console.log("tenMessages:", tenMessages);
+            // console.log("tenMessages:", tenMessages);
             io.sockets.emit("showLastTenMessages", tenMessages.reverse());
         })
         .catch(err => {

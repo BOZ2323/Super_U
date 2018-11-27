@@ -19,7 +19,7 @@ import Chat from './chat';
 ////// log out //////////////////////////////
 
 export function Logout() {
-    return <a className="logoutButton" href='/logout'>Log out</a>
+    return <a className="button_logout" href='/logout'>Log out</a>
 
 }
 ///////// LINK TO MY PROFILE ///////////////////////
@@ -81,7 +81,23 @@ export class App extends React.Component {
             return null;
         }
         return (
-            <div>
+            <div className="render_div">
+                
+                {/*friends button*/}
+                <div className="menu">
+                    <div className="menu_item">
+                        <a href="/friends">MY FRIENDS</a>
+                    </div>
+                    <div className="menu_item">
+                        <a href="/onlineUsers">WHO IS ONLINE</a>
+                    </div>
+                    <div className="menu_item">
+                        <a href="/chat">CHAT</a>
+                    </div>
+                    <div className="menu_item">
+                        <a href="/logout">LOGOUT</a>
+                    </div>
+                </div>
                 <ProfilePic
                     image ={this.state.image}
                     first ={this.state.first}
@@ -89,10 +105,7 @@ export class App extends React.Component {
                     id ={this.state.id}
                     clickHandler={this.showUploader}
                 />
-                {/*friends button*/}
-                <a className="buttonLink" href="/friends">Friends</a>
-                <a className="buttonLink" href="/logout">logout</a>
-                <img src = "/logo.png"/>
+
                 <BrowserRouter>
                     <div>
                         <Route

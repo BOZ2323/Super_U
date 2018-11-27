@@ -11,6 +11,7 @@ export default class FriendshipButton extends React.Component {
     }
 
     componentDidMount() {
+        console.log('comp friendshipButton did mount');
         axios.get('/friendship-status', {
             params: {
                 id: this.props.receiverId
@@ -37,6 +38,8 @@ export default class FriendshipButton extends React.Component {
     }
 
     friendButtonAction() {
+        console.log('friendButton clicked');
+        console.log('this.state.status', this.state.status);
         if(this.state.status == "Add Friend") {
             axios.post('/send-friend-request', {
                 id: this.props.receiverId
