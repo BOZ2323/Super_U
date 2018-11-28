@@ -13,6 +13,7 @@ CREATE TABLE super_users (
     users_bio VARCHAR (2000)
 );
 
+
 DROP TABLE IF EXISTS chats;
 
 CREATE TABLE chats (
@@ -38,6 +39,11 @@ CREATE TABLE friendships (
 UPDATE super_users
 SET image_url = 'http://img.filmsactu.net/datas/films/p/o/ponyo-sur-la-falaise/xl/49a2b5c2f198e.jpg'
 WHERE id = 20;
+
+UPDATE friendships
+SET accepted = 'true'
+WHERE id = 4;
+
 
 
 -- DROP TABLE IF EXISTS cute_animals;

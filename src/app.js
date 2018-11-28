@@ -81,20 +81,20 @@ export class App extends React.Component {
             return null;
         }
         return (
-            <div className="render_div">
-                
+            <div id="container">
+                <div id="my_logo"></div>
                 {/*friends button*/}
-                <div className="menu">
-                    <div className="menu_item">
+                <div id="nav">
+                    <div className="navbar_items">
                         <a href="/friends">MY FRIENDS</a>
                     </div>
-                    <div className="menu_item">
+                    <div className="navbar_items">
                         <a href="/onlineUsers">WHO IS ONLINE</a>
                     </div>
-                    <div className="menu_item">
+                    <div className="navbar_items">
                         <a href="/chat">CHAT</a>
                     </div>
-                    <div className="menu_item">
+                    <div className="navbar_items">
                         <a href="/logout">LOGOUT</a>
                     </div>
                 </div>
