@@ -29,8 +29,8 @@ class Friends extends React.Component {
 
         return (
 
-            <div>
-                <h1>Friends</h1>
+            <div className="container">
+                <h1 id="friends">your friends</h1>
                 {this.props.friends.map(
                     friendsWannabees => (
                         <div className ="friendsWannabees"key={friendsWannabees.id}>
@@ -40,7 +40,7 @@ class Friends extends React.Component {
                         </div>
                     )
                 )}
-                <h1>Wannabees</h1>
+                <h1 id="wannabees">want to be friends</h1>
                 {this.props.wannabees.map(
                     friendsWannabees => (
                         <div className ="friendsWannabees"key={friendsWannabees.id}>

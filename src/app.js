@@ -81,21 +81,21 @@ export class App extends React.Component {
             return null;
         }
         return (
-            <div id="container">
-                <div id="my_logo"></div>
+            <div className="container">
+                <div id="my_logo">SUPER(U)</div>
                 {/*friends button*/}
                 <div id="nav">
                     <div className="navbar_items">
-                        <a href="/friends">MY FRIENDS</a>
+                        <a href="/friends">my friends</a>
                     </div>
                     <div className="navbar_items">
-                        <a href="/onlineUsers">WHO IS ONLINE</a>
+                        <a href="/onlineUsers">who is online</a>
                     </div>
                     <div className="navbar_items">
-                        <a href="/chat">CHAT</a>
+                        <a href="/chat">chat</a>
                     </div>
                     <div className="navbar_items">
-                        <a href="/logout">LOGOUT</a>
+                        <a href="/logout">logout</a>
                     </div>
                 </div>
                 <ProfilePic
