@@ -32,7 +32,7 @@ class Chat extends React.Component {
 
         return (
             <div>
-                <h1>chat running!!</h1>
+                <h1 id="chat">start talking!!</h1>
                 <div className = "chat-messages-container"ref={elem => (this.elem = elem)}>
                     {message.map(
                         user => (

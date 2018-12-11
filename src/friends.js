@@ -29,11 +29,11 @@ class Friends extends React.Component {
 
         return (
 
-            <div className="container">
+            <div className="friends_container">
                 <h1 id="friends">your friends</h1>
                 {this.props.friends.map(
                     friendsWannabees => (
-                        <div className ="friendsWannabees"key={friendsWannabees.id}>
+                        <div className ="friends_list"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
                             <button className = "button_login" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
@@ -43,7 +43,7 @@ class Friends extends React.Component {
                 <h1 id="wannabees">want to be friends</h1>
                 {this.props.wannabees.map(
                     friendsWannabees => (
-                        <div className ="friendsWannabees"key={friendsWannabees.id}>
+                        <div className ="wannabees_list"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
 
@@ -58,7 +58,7 @@ class Friends extends React.Component {
 
 }
 const mapStateToProps = state => {
-console.log('state in mapSTate', state);
+    console.log('state in mapSTate', state);
     return {
         friends: state.friendsWannabees && state.friendsWannabees.filter(
             f => f.accepted
