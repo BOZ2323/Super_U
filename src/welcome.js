@@ -8,9 +8,9 @@ import {Login} from './login';
 
 export function Welcome() {
     return (
-        <div id="welcome">
-            <h1>welcome</h1>
-            <img src="/logo.png" />
+        <div className="container">
+            <div id="logo_welcome">SUPER(U)</div>
+            
 
             <HashRouter>
                 <div>

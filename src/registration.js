@@ -56,9 +56,9 @@ export class Registration extends React.Component {
                 <input className = "register_input" name="last" placeholder="Last name" onChange={this.handleChange} />
                 <input className = "register_input" name="email" placeholder="E-Mail address" onChange={this.handleChange} />
                 <input className = "register_input" name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-                <button className = "button_register" onClick={this.handleSubmit}>Register</button>
-                <button className = "button_login" ><Link to="/login">Click here to Log in!</Link></button>
-                
+                <button className = "button_register" onClick={this.handleSubmit}>sign in</button>
+                <button className = "button_login"><Link to="/login">login</Link></button>
+
             </div>
 
         );
