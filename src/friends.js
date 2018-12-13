@@ -36,7 +36,7 @@ class Friends extends React.Component {
                         <div className ="friends_list"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
-                            <button className = "button_login" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                            <button className = "button_farewell" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
                         </div>
                     )
                 )}
@@ -47,7 +47,7 @@ class Friends extends React.Component {
                             {friendsWannabees.first} {friendsWannabees.last}
                             <img src={friendsWannabees.imgage_url} />
 
-                            <button className = "button_login" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
+                            <button className = "button_farewell" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
                             {/* acceptFriendsRequest sends an action back to the reducer*/}
                         </div>
                     )

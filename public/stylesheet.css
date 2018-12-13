@@ -166,14 +166,39 @@ textarea{
 
 
     border: none;
-    margin-left: 40px;
     width: 160px;
     height: 38px;
     color: white;
     font: 18px Arial;
     /* background-color: red; */
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+    display: block;
+    margin-top: 50px;
+    margin-right: auto;
+    margin-left: auto;
 }
+
+.button_farewell{
+    color:         white !important;
+    display:       inline;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    background:    #3d85c6;
+    background:    -webkit-linear-gradient(#3d85c6, #0b5394);
+    background:    linear-gradient(#3d85c6, #0b5394);
+    border-radius: 5px;
+    text-decoration: none !important;
+
+
+    border: none;
+    margin-left: 40px;
+    width: 80px;
+    height: 25px;
+    color: white;
+    font: 13px Arial;
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+}
+
 
 .button_login{
     color:         white !important;
@@ -195,6 +220,8 @@ textarea{
     font: 18px Arial;
     /* background-color: red; */
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+    display: block;
+    margin: auto;
 }
 
 .button_login a {
