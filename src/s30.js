@@ -12,7 +12,7 @@ if (process.env.NODE_ENV == 'production') {
 const client = knox.createClient({
     key: secrets.AWS_KEY,
     secret: secrets.AWS_SECRET,
-    bucket: 'spicedling'
+    bucket: 'marille'
 });
 
 exports.upload = function(req, res, next) {
@@ -36,21 +36,3 @@ exports.upload = function(req, res, next) {
         }
     });
 };
-
-
-
-
-
-/////////////////////////////
-// const readStream = fs.createREadSTream(req.file.path);
-//     readStream.pip(s3Request);
-// console.log(s3Request.statusCode);
-//     s3Request.on('response', s3Response =>{
-//     if(s3Response.statusCode == 200){
-//         console.log(statusCode);
-//     }else{
-//         res.sendStatus(500);
-//     }
-//     fs.unlink(req.file.path, () => {});
-// }
-// )

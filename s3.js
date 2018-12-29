@@ -11,12 +11,15 @@ if (process.env.NODE_ENV == 'production') {
 console.log('secrets',secrets);
 const client = knox.createClient({
     key: secrets.AWS_KEY,
+
     secret: secrets.AWS_SECRET,
-    bucket: 'spicedling'
+    bucket: 'marille'
 });
 
 exports.upload = function(req, res, next) {
+    console.log("req.file", req.file);
     if (!req.file) {
+
         return res.sendStatus(500);
     }
     const s3Request = client.put(req.file.filename, {

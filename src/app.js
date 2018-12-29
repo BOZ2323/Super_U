@@ -86,19 +86,20 @@ export class App extends React.Component {
                     <div id="my_logo">SUPER(U)</div>
                     {/*friends button*/}
                     <div id="nav">
-                        <div className="navbar_items">
+                        <div className="nav_items">
                             <a href="/friends">my friends</a>
                         </div>
-                        <div className="navbar_items">
+                        <div className="nav_items">
                             <a href="/onlineUsers">who is online</a>
                         </div>
-                        <div className="navbar_items">
+                        <div className="nav_items">
                             <a href="/chat">chat</a>
                         </div>
-                        <div className="navbar_items">
+                        <div className="nav_items">
                             <a href="/logout">logout</a>
                         </div>
                     </div>
+                    <div id="menu_banderole"></div>
                 </div>
                 <ProfilePic
                     image ={this.state.image}

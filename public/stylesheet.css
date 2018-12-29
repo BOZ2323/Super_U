@@ -2,7 +2,7 @@
 
 #my_logo{
     font-family: Phosphate;
-    font-size: 67px;
+    font-size: 35px;
     color: white;
     padding-left: 30px;
 }
@@ -37,6 +37,14 @@ main {
 }
 li{
     list-style-type: none;
+}
+.header{
+    display: flex;
+}
+#menu_banderole{
+    grid-column: 0 / 2;
+    grid-row: 0/7;
+    background: #333;
 }
 .container{
     grid-column: 1 / 11;
@@ -93,7 +101,7 @@ textarea{
     /* justify-content: space-between; */
     width: 70%;
 }
-.navbar_items a {
+.nav_items a {
     grid-column: 1 / 6;
     grid-row: 2 / 3;
     float: left;
@@ -107,14 +115,7 @@ textarea{
 }
 
 
-/* navbar_items:nth-child(1){
-    color: green;
-} */
-
 #profile_image{
-    /*border: 20px solid #79554847;*/
-    /* margin-top: 40px;
-    margin-right: 70px; */
     -moz-border-radius: 20px;
     -webkit-border-radius: 45px;
     width: 100%;
