@@ -87,15 +87,15 @@ export class App extends React.Component {
                     {/*friends button*/}
                     <div id="nav">
                         <div className="nav_items">
-                            <a href="/friends">my friends</a>
+                            <a href="/friends">friends</a>
                         </div>
                         <div className="nav_items">
-                            <a href="/onlineUsers">who is online</a>
+                            <a href="/onlineUsers">online</a>
                         </div>
                         <div className="nav_items">
                             <a href="/chat">chat</a>
                         </div>
-                        <div className="nav_items">
+                        <div className="nav_items" id="logout">
                             <a href="/logout">logout</a>
                         </div>
                     </div>

@@ -13,7 +13,6 @@ export function ProfilePic(props){
             <div className="image_container">
                 <img id="profile_image" onClick={props.clickHandler} src={image}/>
             </div>
-            // className ="image_title"
         );
     }
 }

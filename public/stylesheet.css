@@ -1,4 +1,6 @@
-
+* {
+    margin: 0; padding: 0;
+}
 
 #my_logo{
     font-family: Phosphate;
@@ -72,10 +74,18 @@ box-sizing: border-box;
 
 .friends_container{
     padding-top: 100px;
+    text-align: center;
+    width: 50vw;
+    height: 100vh;
+    margin: 0 auto;
+    background: red;
+    margin-top: 6rem;
+}
 }
 textarea{
-    width: 50%;
-    background-color: grey;
+    background: #99948f;
+    text-decoration: none;
+    width: 50vw;
 }
 .friends_list {
 
@@ -99,7 +109,7 @@ textarea{
     grid-template-columns: repeat(4, 1fr);
 
     /* justify-content: space-between; */
-    width: 70%;
+    width: 40vw;
 }
 .nav_items a {
     grid-column: 1 / 6;
@@ -108,17 +118,18 @@ textarea{
     font-size: 14px;
     font-weight: bold;
 
-    color: white;
+    color: #ce9696;
     padding: 10px 30px 0px 30px;
     text-decoration: none;
     font-family: Arial;
 }
 
 
+
 #profile_image{
-    -moz-border-radius: 20px;
-    -webkit-border-radius: 45px;
-    width: 100%;
+    /* -moz-border-radius: 20px;
+    -webkit-border-radius: 45px; */
+    width: 15%;
     height: auto;
 
 }
