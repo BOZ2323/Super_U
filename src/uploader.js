@@ -35,9 +35,9 @@ export class Uploader extends React.Component {
     }
     render(){
         return (
-            <div>
-                <h1>upload your picture here</h1>
-                <input onChange={this.handleFileChange} type="file" name="file" accept="image/*"/>
+            <div className="friends_container">
+                <h1 id="friends">upload your picture here</h1>
+                <input className="button_farewell" onChange={this.handleFileChange} type="file" name="file" accept="image/*"/>
 
             </div>
         );

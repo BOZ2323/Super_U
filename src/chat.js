@@ -31,14 +31,14 @@ class Chat extends React.Component {
         const { message } = this.props;
 
         return (
-            <div>
-                <h1 id="chat">start talking!!</h1>
+            <div className="friends_container" >
+                <h1 id="friends">start talking!!</h1>
                 <div className = "chat-messages-container"ref={elem => (this.elem = elem)}>
                     {message.map(
                         user => (
                             <ul key={user.id}>
-                                <li>
-                                    {user.first} {user.last}{user.message}
+                                <li id="chat_messages">
+                                    {user.first} {user.last}   {user.message}
                                 </li>
                             </ul>
                         ))}

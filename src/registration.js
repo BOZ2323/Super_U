@@ -50,14 +50,14 @@ export class Registration extends React.Component {
     }
     render() {
         return (
-            <div>
+            <div className="friends_container">
                 {this.state.error && <p className="error">Something went wrong! Try again</p>}
                 <input className = "register_input" name="first" placeholder="First name" onChange={this.handleChange} />
                 <input className = "register_input" name="last" placeholder="Last name" onChange={this.handleChange} />
                 <input className = "register_input" name="email" placeholder="E-Mail address" onChange={this.handleChange} />
                 <input className = "register_input" name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-                <button className = "button_register" onClick={this.handleSubmit}>sign in</button>
-                <button className = "button_login"><Link to="/login">login</Link></button>
+                <button className = "button_farewell" onClick={this.handleSubmit}>sign in</button>
+                <button className = "button_farewell"><Link to="/login">login</Link></button>
 
             </div>
 

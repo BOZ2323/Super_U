@@ -79,7 +79,7 @@ box-sizing: border-box;
     width: 100vw;
     height: 100vw;
     margin: 0 auto;
-    background: #705c5c3d;
+    background: #8f9091;
 }
 }
 textarea{
@@ -277,6 +277,7 @@ textarea{
     margin-left: auto;
     margin-right: auto;
     width: 23%;
+    height: 2rem;
 }
 
 input:-webkit-autofill {
@@ -323,9 +324,8 @@ button {
 }
 
 .chat-messages-container{
-    border-color: purple;
-    width: 300px;
-    height: 200px;
+    height: 320px;
+    line-height: 2;
     overflow-y: scroll;
 }
 
@@ -350,11 +350,11 @@ button {
     font-weight: bolder;
     font-size: 30px;
 }
-#chat{
-    color: #ce5c00;
+#chat_messages{
+    color: black;
     font-family: Arial;
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 1rem;
 }
 
 
