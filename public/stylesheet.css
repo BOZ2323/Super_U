@@ -76,10 +76,10 @@ box-sizing: border-box;
     padding-bottom: 50px;
     padding-top: 100px;
     text-align: center;
-    width: 50vw;
+    width: 100vw;
+    height: 100vw;
     margin: 0 auto;
     background: #705c5c3d;
-    margin-top: 6rem;
 }
 }
 textarea{
@@ -135,7 +135,7 @@ textarea{
 #profile_image{
     /* -moz-border-radius: 20px;
     -webkit-border-radius: 45px; */
-    width: 15%;
+    width: 30%;
     height: auto;
 
 }
@@ -201,18 +201,30 @@ textarea{
     background:    #3d85c6;
     background:    -webkit-linear-gradient(#3d85c6, #0b5394);
     background: linear-gradient(#8f9091, #7e7f80);
-
     text-decoration: none !important;
-
-
     border: none;
-
     width: 80px;
     height: 25px;
     color: white;
     font: 13px Arial;
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+    margin-bottom: 20px;
 }
+.friendButton{
+
+    background:    #3d85c6;
+    background:    -webkit-linear-gradient(#3d85c6, #0b5394);
+    background: linear-gradient(#8f9091, #7e7f80);
+    text-decoration: none !important;
+    border: none;
+    width: 80px;
+    height: 25px;
+    color: white;
+    font: 13px Arial;
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
+    margin-bottom: 20px;
+}
+
 
 
 .button_login{
@@ -344,3 +356,11 @@ button {
     font-weight: bolder;
     font-size: 30px;
 }
+
+
+
+/* screen sizes 500px and up */
+@media(max-width: 700px){
+    #profile_image{
+        width: 60%;
+    }

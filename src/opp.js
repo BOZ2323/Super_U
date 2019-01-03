@@ -34,8 +34,8 @@ export default class Opp extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h1>Hi, this is the profile page of {this.state.first} {this.state.last}</h1>
+            <div className="friends_container">
+                <h1 id="friends">Hi, this is the profile page of {this.state.first} {this.state.last}</h1>
                 <img src={this.state.image_url} />
                 <p>
                     {this.state.email}
@@ -43,7 +43,7 @@ export default class Opp extends React.Component {
                 </p>
 
                 <FriendshipButton receiverId={this.props.match.params.id}></FriendshipButton>
-                <button className = "button_login" ><Link to="/friends">friends</Link></button>
+
 
 
 
