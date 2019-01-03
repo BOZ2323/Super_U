@@ -33,9 +33,9 @@ class Friends extends React.Component {
                 <h1 id="friends">your friends</h1>
                 {this.props.friends.map(
                     friendsWannabees => (
-                        <div className ="friends_list"key={friendsWannabees.id}>
+                        <div className ="friends_list" key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
-                            <img src={friendsWannabees.image_url} />
+                            <img className = "friends_image" src={friendsWannabees.image_url} />
                             <button className = "button_farewell" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
                         </div>
                     )
@@ -45,7 +45,7 @@ class Friends extends React.Component {
                     friendsWannabees => (
                         <div className ="wannabees_list"key={friendsWannabees.id}>
                             {friendsWannabees.first} {friendsWannabees.last}
-                            <img src={friendsWannabees.image_url} />
+                            <img className ="friends_image" src={friendsWannabees.image_url} />
 
                             <button className = "button_farewell" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
                             {/* acceptFriendsRequest sends an action back to the reducer*/}
