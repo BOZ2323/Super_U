@@ -78,7 +78,7 @@ box-sizing: border-box;
     text-align: center;
     width: 50vw;
     margin: 0 auto;
-    background: red;
+    background: #705c5c3d;
     margin-top: 6rem;
 }
 }
@@ -104,7 +104,7 @@ textarea{
 .wannabees_list {
     font-size: 14px;
     font-family: Arial;
-
+    color: white;
     padding-left: 20px;
     line-height: 170%;
 }
@@ -197,19 +197,16 @@ textarea{
 }
 
 .button_farewell{
-    color:         white !important;
-    display:       inline;
-    font:          normal 700 24px/1 "Calibri", sans-serif;
-    text-align:    center;
+
     background:    #3d85c6;
     background:    -webkit-linear-gradient(#3d85c6, #0b5394);
-    background:    linear-gradient(#3d85c6, #0b5394);
-    border-radius: 5px;
+    background: linear-gradient(#8f9091, #7e7f80);
+
     text-decoration: none !important;
 
 
     border: none;
-    margin-left: 40px;
+
     width: 80px;
     height: 25px;
     color: white;

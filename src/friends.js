@@ -34,9 +34,15 @@ class Friends extends React.Component {
                 {this.props.friends.map(
                     friendsWannabees => (
                         <div className ="friends_list" key={friendsWannabees.id}>
-                            {friendsWannabees.first} {friendsWannabees.last}
+
                             <img className = "friends_image" src={friendsWannabees.image_url} />
-                            <button className = "button_farewell" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                            <div>
+                                <p>{friendsWannabees.first} {friendsWannabees.last}</p>
+                                <br />
+                                <button className = "button_farewell" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                            </div>
+
+
                         </div>
                     )
                 )}
@@ -44,11 +50,14 @@ class Friends extends React.Component {
                 {this.props.wannabees.map(
                     friendsWannabees => (
                         <div className ="wannabees_list"key={friendsWannabees.id}>
-                            {friendsWannabees.first} {friendsWannabees.last}
-                            <img className ="friends_image" src={friendsWannabees.image_url} />
+                            <img className = "friends_image" src={friendsWannabees.image_url} />
+                            <div>
+                                <p>{friendsWannabees.first} {friendsWannabees.last}</p>
+                                <br />
 
-                            <button className = "button_farewell" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
-                            {/* acceptFriendsRequest sends an action back to the reducer*/}
+                                <button className = "button_farewell" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
+                                {/* acceptFriendsRequest sends an action back to the reducer*/}
+                            </div>
                         </div>
                     )
                 )}
