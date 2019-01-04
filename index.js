@@ -187,7 +187,9 @@ app.post('/send-friend-request', function(req, res) {
 //// accepting friends request ////////
 
 app.post('/accept-friend-request', function(req, res) {
-    db.acceptFriendRequest(req.session.userId, req.body.receiver_id)
+
+    console.log("sender, receiver",req.session.userId, req.body.id);
+    db.acceptFriendRequest(req.session.userId, req.body.id)
         .then(results => {
             res.json(results);
         })

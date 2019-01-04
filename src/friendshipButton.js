@@ -52,10 +52,13 @@ export default class FriendshipButton extends React.Component {
                 }
             }).catch(err => console.log(err));
         } else if (this.state.status == "Accept") {
+            console.log("this.props.receiverId",this.props.receiverId);
             axios.post('/accept-friend-request', {
                 receiver_id: this.props.receiverId
+
             }).then(results => {
                 if(results.data.accepted) {
+
                     this.setState({
                         status : "Unfriend"
                     });
