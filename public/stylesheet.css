@@ -63,7 +63,7 @@ li{
 
 .content_container {
     float: left;
-    width: 80%;
+    width: 100%;
     padding-left: 30px;
     -webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
@@ -195,7 +195,22 @@ textarea{
     margin-right: auto;
     margin-left: auto;
 }
+.button_login{
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    background:    #3d85c6;
+    background:    -webkit-linear-gradient(#3d85c6, #0b5394);
+    background: linear-gradient(#8f9091, #7e7f80);
+    text-decoration: none !important;
+    border: none;
+    width: 80px;
+    height: 25px;
+    color: white;
+    font: 13px Arial;
+    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
 
+}
 .button_farewell{
 
     background:    #3d85c6;
@@ -226,31 +241,6 @@ textarea{
 }
 
 
-
-.button_login{
-    color:         white !important;
-    display:       inline-block;
-    font:          normal 700 24px/1 "Calibri", sans-serif;
-    text-align:    center;
-    background:    #3d85c6;
-    background:    -webkit-linear-gradient(#3d85c6, #0b5394);
-    background:    linear-gradient(#3d85c6, #0b5394);
-    border-radius: 5px;
-    text-decoration: none !important;
-
-
-    border: none;
-    margin-left: 40px;
-    width: 160px;
-    height: 38px;
-    color: white;
-    font: 18px Arial;
-    /* background-color: red; */
-    box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
-    display: block;
-    margin: auto;
-}
-
 .button_login a {
     color: white;
     text-decoration: none;
@@ -268,12 +258,15 @@ textarea{
 }
 
 .register_input {
+    border-color: white;
+    color: black;
+    background-color: #8f9091;
+    outline: 0;
+    border-width: 0 0 1px;
     font-family: Arial, Sans-Serif;
     font-size: 20px;
     margin-bottom: 5px;
     display: block;
-    background-color: white;
-    border: none;
     margin-left: auto;
     margin-right: auto;
     width: 23%;
@@ -281,10 +274,23 @@ textarea{
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset;
+    -webkit-box-shadow: 0 0 0 30px #8f9091 inset;
 }
 .login_input {
+    border-color: white;
+    color: black;
+    background-color: #8f9091;
+    outline: 0;
+    border-width: 0 0 1px;
     font-family: Arial, Sans-Serif;
+    font-size: 20px;
+    margin-bottom: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 23%;
+    height: 2rem;
+    /* font-family: Arial, Sans-Serif;
     font-size: 20px;
     margin-bottom: 5px;
     display: block;
@@ -292,7 +298,7 @@ input:-webkit-autofill {
     border: none;
     margin-left: auto;
     margin-right: auto;
-    width: 23%;
+    width: 23%; */
 }
 button {
     align-items: center;
