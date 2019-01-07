@@ -10,19 +10,21 @@ class OnlineUsers extends React.Component{
         const { onlineUsers } = this.props;
 
         return(
-            <div className="friends_container">
-                <h1 id="friends">These users are online</h1>
-                {onlineUsers.map(
-                    user => (
-                        <ul className ="friends_list" key={user.id}>
-                            <li>
-                                <img className = "friends_image" src={user.image_url} />
-                                <p>{user.first} {user.last}</p>
-                                <br />
+            <div className="onlineUsers">
+                <div className="friends_container">
+                    <h1 id="friends">users online</h1>
+                    {onlineUsers.map(
+                        user => (
+                            <ul className ="friends_list" key={user.id}>
+                                <li>
+                                    <img className = "friends_image" src={user.image_url} />
+                                    <p>{user.first} {user.last}</p>
+                                    <br />
 
-                            </li>
-                        </ul>
-                    ))}
+                                </li>
+                            </ul>
+                        ))}
+                </div>
             </div>
         );
     }

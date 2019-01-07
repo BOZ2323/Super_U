@@ -84,6 +84,17 @@ box-sizing: border-box;
     border-left: 1px solid #0d0d0d;
     border-top: 1px solid #0d0d0d;
 }
+.onlineUsers{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 50px;
+    padding-top: 40px;
+    width: 100vw;
+    height: 100vw;
+    margin: 0 auto;
+    border-left: 1px solid #0d0d0d;
+    border-top: 1px solid #0d0d0d;
+}
 .friends_container{
     padding-left: 3rem;
 }
@@ -142,7 +153,7 @@ textarea{
     font-family: 'Roboto', sans-serif;
 }
 .nav_items a:hover {
-    color: white;
+    color: #fc2cc3;
 }
 hr {
     display: block;
@@ -234,7 +245,7 @@ hr {
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
 
 }
-/* .button_farewell{
+.button_farewell{
 
     background:    #3d85c6;
     background:    -webkit-linear-gradient(#3d85c6, #0b5394);
@@ -247,12 +258,12 @@ hr {
     font: 13px Arial;
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
     margin-bottom: 20px;
-} */
+}
 .button_pure{
     border: none;
     color: #398bae;
     font-family: 'Roboto', sans-serif;
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 .friendButton{
 
