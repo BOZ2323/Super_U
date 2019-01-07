@@ -28,39 +28,42 @@ class Friends extends React.Component {
         }
 
         return (
+            <div className="friendsWannabees">
+                <div className="friends_container">
+                    <h1 id="friends">friends:</h1>
+                    {this.props.friends.map(
+                        friendsWannabees => (
+                            <div className ="friends_list" key={friendsWannabees.id}>
 
-            <div className="friends_container">
-                <h1 id="friends">your friends</h1>
-                {this.props.friends.map(
-                    friendsWannabees => (
-                        <div className ="friends_list" key={friendsWannabees.id}>
+                                <img className = "friends_image" src={friendsWannabees.image_url} />
+                                <div>
+                                    <p>{friendsWannabees.first} {friendsWannabees.last}</p>
+                                    <br />
+                                    <button className = "button_pure" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+                                </div>
 
-                            <img className = "friends_image" src={friendsWannabees.image_url} />
-                            <div>
-                                <p>{friendsWannabees.first} {friendsWannabees.last}</p>
-                                <br />
-                                <button className = "button_farewell" onClick={() => dispatch(unfriend(friendsWannabees.id))}>farewell</button>
+
                             </div>
+                        )
+                    )}
+                </div>
+                <div className="wannabees_container">
+                    <h1 id="wannabees">friend request from:</h1>
+                    {this.props.wannabees.map(
+                        friendsWannabees => (
+                            <div className ="wannabees_list"key={friendsWannabees.id}>
+                                <img className = "friends_image" src={friendsWannabees.image_url} />
+                                <div>
+                                    <p>{friendsWannabees.first} {friendsWannabees.last}</p>
+                                    <br />
 
-
-                        </div>
-                    )
-                )}
-                <h1 id="wannabees">want to be friends</h1>
-                {this.props.wannabees.map(
-                    friendsWannabees => (
-                        <div className ="wannabees_list"key={friendsWannabees.id}>
-                            <img className = "friends_image" src={friendsWannabees.image_url} />
-                            <div>
-                                <p>{friendsWannabees.first} {friendsWannabees.last}</p>
-                                <br />
-
-                                <button className = "button_farewell" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>Accept</button>
-                                {/* acceptFriendsRequest sends an action back to the reducer*/}
+                                    <button className = "button_pure" onClick={() => dispatch(acceptFriendRequest(friendsWannabees.id))}>accept</button>
+                                    {/* acceptFriendsRequest sends an action back to the reducer*/}
+                                </div>
                             </div>
-                        </div>
-                    )
-                )}
+                        )
+                    )}
+                </div>
             </div>
         );
     }

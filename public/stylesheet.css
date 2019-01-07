@@ -25,7 +25,7 @@ body{
     margin: 20;
     padding: 0;
     margin: 0;
-    background-color: ghostwhite;
+    background-color: white;
 }
 
 h1 {
@@ -73,16 +73,22 @@ li{
 box-sizing: border-box;
 }
 
-.friends_container{
+.friendsWannabees{
+    display: flex;
+    flex-direction: column;
     padding-bottom: 50px;
-    padding-top: 100px;
-    text-align: center;
+    padding-top: 40px;
     width: 100vw;
     height: 100vw;
     margin: 0 auto;
-    background: white;
     border-left: 1px solid #0d0d0d;
     border-top: 1px solid #0d0d0d;
+}
+.friends_container{
+    padding-left: 3rem;
+}
+.wannabees_container{
+    padding-left: 3rem;
 }
 }
 textarea{
@@ -91,12 +97,13 @@ textarea{
     width: 50vw;
 }
 .friends_list {
-
-    font-size: 16px;
-    font-family: Arial;
-    color: white;
-    padding-left: 20px;
-    line-height: 170%;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    color: #ce9696;
+    padding: 10px 30px 0px 30px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 .friends_image {
@@ -105,11 +112,13 @@ textarea{
 
 
 .wannabees_list {
-    font-size: 14px;
-    font-family: Arial;
-    color: white;
-    padding-left: 20px;
-    line-height: 170%;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    color: #ce9696;
+    padding: 10px 30px 0px 30px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -124,12 +133,9 @@ textarea{
 .nav_items a {
     flex-direction: row;
     float: left;
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 0.0625em;
-
-
     color: #ce9696;
     padding: 10px 30px 0px 30px;
     text-decoration: none;
@@ -228,7 +234,7 @@ hr {
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
 
 }
-.button_farewell{
+/* .button_farewell{
 
     background:    #3d85c6;
     background:    -webkit-linear-gradient(#3d85c6, #0b5394);
@@ -241,6 +247,12 @@ hr {
     font: 13px Arial;
     box-shadow: 0px 2px 19px rgba(50, 50, 50, 0.75);
     margin-bottom: 20px;
+} */
+.button_pure{
+    border: none;
+    color: #398bae;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
 }
 .friendButton{
 
@@ -307,15 +319,6 @@ input:-webkit-autofill {
     margin-right: auto;
     width: 23%;
     height: 2rem;
-    /* font-family: Arial, Sans-Serif;
-    font-size: 20px;
-    margin-bottom: 5px;
-    display: block;
-    background-color: white;
-    border: none;
-    margin-left: auto;
-    margin-right: auto;
-    width: 23%; */
 }
 button {
     align-items: center;
@@ -353,19 +356,24 @@ button {
 }
 
 #friends{
-    color: #e8c9b0;
-    font-family: Arial;
-    font-weight: bolder;
-    font-size: 30px;
-    padding-bottom: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    color: #090808;
+    padding: 10px 30px 0px 30px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
 }
 #wannabees{
-    color: #e8c9b0;
-    font-family: Arial;
-    font-weight: bolder;
-    font-size: 30px;
-    padding-top: 30px;
-    padding-bottom: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    color: #090808;
+    padding: 10px 30px 0px 30px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 2rem;
+}
 }
 #online_users{
     color: #ce5c00;
