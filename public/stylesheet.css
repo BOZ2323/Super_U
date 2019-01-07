@@ -4,9 +4,10 @@
 
 #my_logo{
     font-family: Phosphate;
-    font-size: 35px;
-    color: white;
+    font-size: 50px;
+    color: black;
     padding-left: 30px;
+    margin-top: 9px;
 }
 #logo_welcome{
     font-family: Phosphate;
@@ -24,7 +25,7 @@ body{
     margin: 20;
     padding: 0;
     margin: 0;
-    background-color: #888279;
+    background-color: ghostwhite;
 }
 
 h1 {
@@ -79,7 +80,9 @@ box-sizing: border-box;
     width: 100vw;
     height: 100vw;
     margin: 0 auto;
-    background: #8f9091;
+    background: white;
+    border-left: 1px solid #0d0d0d;
+    border-top: 1px solid #0d0d0d;
 }
 }
 textarea{
@@ -111,23 +114,37 @@ textarea{
 
 
 #nav{
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 1fr);
-
+    margin-top: 24px;
     /* justify-content: space-between; */
     width: 40vw;
+
 }
 .nav_items a {
-    grid-column: 1 / 6;
-    grid-row: 2 / 3;
+    flex-direction: row;
     float: left;
     font-size: 14px;
     font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+
 
     color: #ce9696;
     padding: 10px 30px 0px 30px;
     text-decoration: none;
-    font-family: Arial;
+    font-family: 'Roboto', sans-serif;
+}
+.nav_items a:hover {
+    color: white;
+}
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid black;
+    margin: 1em 0;
+    padding: 0;
 }
 
 

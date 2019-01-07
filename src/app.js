@@ -99,8 +99,9 @@ export class App extends React.Component {
                             <a href="/logout">logout</a>
                         </div>
                     </div>
-                    <div id="menu_banderole"></div>
+
                 </div>
+                <hr/>
                 <ProfilePic
                     image ={this.state.image}
                     first ={this.state.first}
