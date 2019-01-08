@@ -147,6 +147,7 @@ app.post('/upload', uploader.single('file'), s3.upload, function(req, res) {
     console.log("s3url", s3url, req.session);
     db.upload(imgUrl, req.session.userId)
         .then(result => {
+            console.log("result.rows",result.rows)
             res.json(result.rows);
 
         });

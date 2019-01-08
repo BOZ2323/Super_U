@@ -21,7 +21,6 @@ export class Uploader extends React.Component {
         axios.post('/upProfile', formData)
             .then((response) => {
                 this.props.setImage(response.data.users_bio);
-                console.log('response',response);
             }).catch(function(err) {console.log(err);});
     }
     uploadImage(){
@@ -29,7 +28,7 @@ export class Uploader extends React.Component {
         formData.append('file', this.file);
         axios.post('/upload', formData)
             .then((response) => {
-                this.props.setImage(response.data.img_url);
+                this.props.setImage(response.data[0].image_url);
                 console.log('response',response);
             }).catch(function(err) {console.log(err);});
     }

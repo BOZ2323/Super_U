@@ -63,6 +63,7 @@ export class App extends React.Component {
         });
     }
     setImage(img){
+        console.log("img", img);
         this.setState({
             image: img,
             uploaderIsVisible: false

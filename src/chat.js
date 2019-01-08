@@ -31,7 +31,7 @@ class Chat extends React.Component {
         const { message } = this.props;
 
         return (
-            <div className="friends_container" >
+            <div className="chat_container" >
                 <h1 id="friends">start talking!!</h1>
                 <div className = "chat-messages-container"ref={elem => (this.elem = elem)}>
                     {message.map(
@@ -45,7 +45,8 @@ class Chat extends React.Component {
 
 
                 </div>
-                <textarea onKeyDown = {this.sendMessage}></textarea>
+                <textarea id="comments" name="comments"
+                    rows="5" cols="3" onKeyDown = {this.sendMessage}></textarea>
 
             </div>
         );
