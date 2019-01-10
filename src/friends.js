@@ -48,7 +48,7 @@ class Friends extends React.Component {
                     )}
                 </div>
                 <div className="wannabees_container">
-                    <h1 id="wannabees">requests</h1>
+                    <h1 id="wanna">requests</h1>
                     {this.props.wannabees.map(
                         friendsWannabees => (
                             <div className ="wannabees_list"key={friendsWannabees.id}>

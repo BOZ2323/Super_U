@@ -55,11 +55,13 @@ export class Login extends React.Component {
     }
     render() {
         return (
-            <div className="friends_container">
+            <div className="register_container">
                 {this.state.error && <p className="error">Something went wrong! Try again</p>}
                 <input className = "login_input" name="email" placeholder="E-Mail address" onChange={this.handleChange} />
                 <input className = "login_input" name="password" type="password" placeholder="Password" onChange={this.handleChange} />
-                <button className = "login" id="inputId" onClick={this.handleSubmit}>Login</button>
+                <div className="register">
+                    <button className = "login" id="inputId" onClick={this.handleSubmit}>Login</button>
+                </div>
             </div>
 
         );

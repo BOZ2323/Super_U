@@ -50,7 +50,7 @@ export class Registration extends React.Component {
     }
     render() {
         return (
-            <div className="friends_container">
+            <div className="register_container">
                 {this.state.error && <p className="error">Something went wrong! Try again</p>}
                 <input className = "register_input" name="first" placeholder="First name" onChange={this.handleChange} />
                 <input className = "register_input" name="last" placeholder="Last name" onChange={this.handleChange} />

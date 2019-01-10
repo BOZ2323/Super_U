@@ -100,6 +100,9 @@ box-sizing: border-box;
     flex-direction: row;
     padding-left: 3rem;
 }
+.register_container{
+    padding-left: 3rem;
+}
 .chat_container{
     display: flex;
     flex-direction: column;
@@ -332,6 +335,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
+input:focus {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+textarea:focus {
+  outline: none;
+}
 
 .login_input {
     outline: 0;
@@ -403,6 +415,15 @@ button {
     text-decoration: none;
     font-family: 'Roboto', sans-serif;
 }
+#wanna{
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.0625em;
+    color: #090808;
+    padding: 10px 30px 0px 10px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+}
 #chat {
     font-size: 20px;
     text-transform: uppercase;
@@ -423,7 +444,7 @@ button {
     font-family: 'Roboto', sans-serif;
     padding-top: 2rem;
 }
-}
+
 #online_users{
     color: #ce5c00;
     font-family: Arial;
